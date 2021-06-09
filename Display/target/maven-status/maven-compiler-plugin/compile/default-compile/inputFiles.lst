@@ -6,4 +6,6 @@
 /home/alex/IdeaProjects/examples/ModuleProject/Display/src/main/java/ru/usachev/display/logiweb/service/RestService.java
 /home/alex/IdeaProjects/examples/ModuleProject/Display/src/main/java/ru/usachev/display/logiweb/dto/TruckDTO.java
 /home/alex/IdeaProjects/examples/ModuleProject/Display/src/main/java/ru/usachev/display/logiweb/dto/OrderDTO.java
+/home/alex/IdeaProjects/examples/ModuleProject/Display/src/main/java/ru/usachev/display/logiweb/message/MyListener.java
 /home/alex/IdeaProjects/examples/ModuleProject/Display/src/main/java/ru/usachev/display/logiweb/dto/WaypointDTO.java
+/home/alex/IdeaProjects/examples/ModuleProject/Display/src/main/java/ru/usachev/display/logiweb/message/ConsumerFirst.java
