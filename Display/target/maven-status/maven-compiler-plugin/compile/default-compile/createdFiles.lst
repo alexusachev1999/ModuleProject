@@ -1,0 +1,9 @@
+ru/usachev/display/logiweb/dto/WaypointDTO.class
+ru/usachev/display/logiweb/service/RestServiceImpl.class
+ru/usachev/display/logiweb/message/Consumer.class
+ru/usachev/display/logiweb/dto/DisplayDTO.class
+ru/usachev/display/logiweb/bean/ExampleBean.class
+ru/usachev/display/logiweb/dto/OrderDTO.class
+ru/usachev/display/logiweb/dto/DriverDTO.class
+ru/usachev/display/logiweb/dto/TruckDTO.class
+ru/usachev/display/logiweb/service/RestService.class

@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jboss-web>
+    <virtual-host>host1</virtual-host>
+    <server-instance>config-server1</server-instance>
+    <context-root>/logiweb</context-root>
+</jboss-web>
