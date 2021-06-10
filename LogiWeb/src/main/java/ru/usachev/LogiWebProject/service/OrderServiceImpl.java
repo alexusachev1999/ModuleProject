@@ -2,6 +2,7 @@ package ru.usachev.LogiWebProject.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import ru.usachev.LogiWebProject.aop.UpdateAnnotation;
 import ru.usachev.LogiWebProject.converter.OrderConverter;
 import ru.usachev.LogiWebProject.dao.OrderDAO;
 import ru.usachev.LogiWebProject.dto.OrderDTO;
@@ -32,6 +33,7 @@ public class OrderServiceImpl implements OrderService {
 
     @Override
     @Transactional
+    @UpdateAnnotation
     public void saveOrder(OrderDTO orderDTO) {
         Order order = orderConverter.convertOrderDTOToOrder(orderDTO);
         orderDAO.saveOrder(order);
@@ -45,6 +47,7 @@ public class OrderServiceImpl implements OrderService {
 
     @Override
     @Transactional
+    @UpdateAnnotation
     public void deleteOrder(int id) {
         orderDAO.deleteOrder(id);
     }
@@ -65,6 +68,7 @@ public class OrderServiceImpl implements OrderService {
 
     @Override
     @Transactional
+    @UpdateAnnotation
     public void saveDriversToOrder(List<Driver> drivers, OrderDTO orderDTO) {
         Order order = orderConverter.convertOrderDTOToOrder(orderDTO);
         for (Driver driver: drivers){
@@ -76,6 +80,7 @@ public class OrderServiceImpl implements OrderService {
 
     @Override
     @Transactional
+    @UpdateAnnotation
     public void orderComplete(int orderId) {
         orderDAO.orderComplete(orderId);
     }

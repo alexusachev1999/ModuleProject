@@ -2,6 +2,7 @@ package ru.usachev.LogiWebProject.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import ru.usachev.LogiWebProject.aop.UpdateAnnotation;
 import ru.usachev.LogiWebProject.converter.WaypointConverter;
 import ru.usachev.LogiWebProject.dao.WaypointDAO;
 import ru.usachev.LogiWebProject.dto.WaypointDTO;
@@ -33,6 +34,7 @@ public class WaypointServiceImpl implements WaypointService{
 
     @Override
     @Transactional
+    @UpdateAnnotation
     public void saveWaypoint(WaypointDTO waypoint) {
         Waypoint convertedWaypoint = waypointConverter.convertWaypointDTOToWaypoint(waypoint);
         waypointDAO.saveWaypoint(convertedWaypoint);
@@ -46,6 +48,7 @@ public class WaypointServiceImpl implements WaypointService{
 
     @Override
     @Transactional
+    @UpdateAnnotation
     public void deleteWaypoint(int id) {
         waypointDAO.deleteWaypoint(id);
     }
@@ -74,12 +77,14 @@ public class WaypointServiceImpl implements WaypointService{
 
     @Override
     @Transactional
+    @UpdateAnnotation
     public void saveWaypointEntity(Waypoint waypoint) {
         waypointDAO.saveWaypointEntity(waypoint);
     }
 
     @Override
     @Transactional
+    @UpdateAnnotation
     public void deleteWaypointByCargoId(int id) {
         waypointDAO.deleteWaypointByCargoId(id);
     }

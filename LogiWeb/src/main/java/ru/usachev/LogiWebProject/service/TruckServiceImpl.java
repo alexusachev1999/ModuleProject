@@ -3,6 +3,7 @@ package ru.usachev.LogiWebProject.service;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import ru.usachev.LogiWebProject.aop.UpdateAnnotation;
 import ru.usachev.LogiWebProject.controller.admin.AdminOrderController;
 import ru.usachev.LogiWebProject.converter.TruckConverter;
 import ru.usachev.LogiWebProject.dao.TruckDAO;
@@ -39,12 +40,14 @@ public class TruckServiceImpl implements TruckService{
 
     @Override
     @Transactional
+    @UpdateAnnotation
     public void deleteTruck(int id) {
         truckDAO.deleteTruck(id);
     }
 
     @Override
     @Transactional
+    @UpdateAnnotation
     public void saveTruck(TruckDTO truck) {
         Truck convertedTruck = truckConverter.convertTruckDTOToTruck(truck);
         truckDAO.saveTruck(convertedTruck);

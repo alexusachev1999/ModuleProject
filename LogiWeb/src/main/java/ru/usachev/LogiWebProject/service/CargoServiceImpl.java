@@ -22,13 +22,13 @@ public class CargoServiceImpl implements CargoService{
 
     @Override
     @Transactional
-    @UpdateAnnotation
     public List<Cargo> getAllCargoes() {
         return cargoDAO.getAllCargoes();
     }
 
     @Override
     @Transactional
+    @UpdateAnnotation
     public void saveCargo(CargoDTO cargo) {
         Cargo convertedCargo = cargoConverter.convertCargoDTOToCargo(cargo);
         cargoDAO.saveCargo(convertedCargo);
@@ -36,6 +36,7 @@ public class CargoServiceImpl implements CargoService{
 
     @Override
     @Transactional
+    @UpdateAnnotation
     public void deleteCargo(int id) {
         cargoDAO.deleteCargo(id);
     }

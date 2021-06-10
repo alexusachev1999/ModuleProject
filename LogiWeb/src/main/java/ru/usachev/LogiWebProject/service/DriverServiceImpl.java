@@ -3,6 +3,7 @@ package ru.usachev.LogiWebProject.service;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import ru.usachev.LogiWebProject.aop.UpdateAnnotation;
 import ru.usachev.LogiWebProject.converter.DriverConverter;
 import ru.usachev.LogiWebProject.dao.DriverDAO;
 import ru.usachev.LogiWebProject.dto.DriverDTO;
@@ -32,6 +33,7 @@ public class DriverServiceImpl implements DriverService{
 
     @Override
     @Transactional
+    @UpdateAnnotation
     public void saveDriver(DriverDTO driver) {
         Driver convertedDriver = driverConverter.convertDriverDTOToDriver(driver);
         driverDAO.saveDriver(convertedDriver);
@@ -46,6 +48,7 @@ public class DriverServiceImpl implements DriverService{
 
     @Override
     @Transactional
+    @UpdateAnnotation
     public void deleteDriver(int id) {
         driverDAO.deleteDriver(id);
     }
@@ -93,12 +96,14 @@ public class DriverServiceImpl implements DriverService{
 
     @Override
     @Transactional
+    @UpdateAnnotation
     public void saveEntityDriver(Driver driver) {
         driverDAO.saveEntityDriver(driver);
     }
 
     @Override
     @Transactional
+    @UpdateAnnotation
     public void updateDriver(DriverDTO driver) {
         driverDAO.updateDriver(driver);
     }
