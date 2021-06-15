@@ -21,6 +21,7 @@ import java.util.List;
 @RequestMapping("/admin")
 public class AdminCargoController {
 
+
     private static Logger logger = Logger.getLogger(AdminCargoController.class);
 
     @Autowired
@@ -62,6 +63,9 @@ public class AdminCargoController {
             if (!isValidCargo)
                 model.addAttribute("uniqueErrorMsg", "Груз с таким " +
                         "именем уже существует");
+            else
+                model.addAttribute("uniqueErrorMsg", "no error");
+
 
             cargo.setNumber((int) (Math.random() * 1000));
             cargo.setStatus("Подготовлен");
@@ -85,6 +89,7 @@ public class AdminCargoController {
     public String updateCargo(@RequestParam("cargoId") int id, Model model){
         CargoDTO cargo = cargoConverter.convertCargoToCargoDTO(cargoService.getCargo(id));
         model.addAttribute("cargo", cargo);
+        model.addAttribute("uniqueErrorMsg", "no error");
         logger.info("Want to update cargo: " + cargo.getName());
         return "admin/add-cargo";
     }

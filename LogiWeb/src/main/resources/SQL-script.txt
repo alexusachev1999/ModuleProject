@@ -75,6 +75,8 @@ CREATE TABLE logiWeb.drivers(
                                 surname varchar(20),
                                 phone_number varchar(16),
                                 worked_hours int,
+                                work_type bool default false,
+                                time_for_order_execution int,
                                 PRIMARY KEY (id),
                                 FOREIGN KEY (truck_id) REFERENCES logiWeb.trucks (id),
                                 FOREIGN KEY (order_id) REFERENCES logiWeb.orders(id),
@@ -130,4 +132,34 @@ INSERT INTO user_roles (username, role)
 VALUES ('alexander', 'ROLE_ADMIN');
 INSERT INTO user_roles (username, role)
 VALUES ('michael', 'ROLE_DRIVER');
+
+INSERT INTO map (city1_id, city2_id, distance) VALUES (1, 1, 0);
+INSERT INTO map (city1_id, city2_id, distance) VALUES (1, 2, 708);
+INSERT INTO map (city1_id, city2_id, distance) VALUES (1, 3, 1791);
+INSERT INTO map (city1_id, city2_id, distance) VALUES (1, 4, 2062);
+INSERT INTO map (city1_id, city2_id, distance) VALUES (1, 5, 2337);
+
+INSERT INTO map (city1_id, city2_id, distance) VALUES (2, 1, 708);
+INSERT INTO map (city1_id, city2_id, distance) VALUES (2, 2, 0);
+INSERT INTO map (city1_id, city2_id, distance) VALUES (2, 3, 1315);
+INSERT INTO map (city1_id, city2_id, distance) VALUES (2, 4, 1587);
+INSERT INTO map (city1_id, city2_id, distance) VALUES (2, 5, 1624);
+
+INSERT INTO map (city1_id, city2_id, distance) VALUES (3, 1, 1791);
+INSERT INTO map (city1_id, city2_id, distance) VALUES (3, 2, 1315);
+INSERT INTO map (city1_id, city2_id, distance) VALUES (3, 3, 0);
+INSERT INTO map (city1_id, city2_id, distance) VALUES (3, 4, 275);
+INSERT INTO map (city1_id, city2_id, distance) VALUES (3, 5, 550);
+
+INSERT INTO map (city1_id, city2_id, distance) VALUES (4, 1, 2062);
+INSERT INTO map (city1_id, city2_id, distance) VALUES (4, 2, 1587);
+INSERT INTO map (city1_id, city2_id, distance) VALUES (4, 3, 275);
+INSERT INTO map (city1_id, city2_id, distance) VALUES (4, 4, 0);
+INSERT INTO map (city1_id, city2_id, distance) VALUES (4, 5, 289);
+
+INSERT INTO map (city1_id, city2_id, distance) VALUES (5, 1, 2337);
+INSERT INTO map (city1_id, city2_id, distance) VALUES (5, 2, 1624);
+INSERT INTO map (city1_id, city2_id, distance) VALUES (5, 3, 550);
+INSERT INTO map (city1_id, city2_id, distance) VALUES (5, 4, 289);
+INSERT INTO map (city1_id, city2_id, distance) VALUES (5, 5, 0);
 

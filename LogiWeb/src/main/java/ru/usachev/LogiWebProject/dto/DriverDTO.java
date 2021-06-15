@@ -5,19 +5,14 @@ import javax.validation.constraints.*;
 public class DriverDTO {
     private int id;
 
-    @Size(min = 2, max = 20, message = "Имя не меньше 2-х и не больше 20-ти символов")
-    @NotBlank
-    @Pattern(regexp = "[А-Я]{1}[а-я]*", message = "Используйте для имени следующий шаблон - \"Александр\"")
+    @Pattern(regexp = "[А-Я]{1}[а-я]*", message = "Например - \"Александр\"")
     private String name;
 
-    @Size (min = 2, max = 20, message = "Имя не меньше 2-х и не больше 20-ти символов")
-    @NotBlank
-    @Pattern(regexp = "[А-Я]{1}[а-я]*", message = "Используйте для имени следующий шаблон - \"Иванов\"")
+    @Pattern(regexp = "[А-Я]{1}[а-я]*", message = "Например - \"Иванов\"")
     private String surname;
 
-    @NotBlank
     @Pattern(regexp = "^\\+[7][-]\\d{3}-\\d{3}-\\d{2}-\\d{2}$",
-            message = "Используйте для номера следующий шаблон - +7-953-146-23-60")
+            message = "Например - +7-953-146-23-60")
     private String phoneNumber;
 
 

@@ -18,10 +18,9 @@
         </div>
         <br/><br/>
 
-
         <h:panelGroup id="display" rendered="true">
             <p:dataTable value = "#{displayBean.displayDTO.orderDTOList}" var = "order"
-                         styleClass="table table-bordered table-dark" paginator="true" rows="5">
+                         styleClass="table table-bordered table-dark" paginator="true" rows="10">
 
                 <p:column>
                     <f:facet name = "header">Номер заказа</f:facet>

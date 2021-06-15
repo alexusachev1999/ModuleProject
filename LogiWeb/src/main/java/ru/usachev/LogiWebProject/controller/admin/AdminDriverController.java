@@ -73,6 +73,8 @@ public class AdminDriverController {
             if (!isValidUser)
                 model.addAttribute("uniqueError", "Пользователь " +
                         "с таким именем существует!");
+            else
+                model.addAttribute("uniqueError", "no error");
 
             userDTO.setUserRole("ROLE_DRIVER");
             userDTO.setEnabled(true);
@@ -99,6 +101,9 @@ public class AdminDriverController {
             if (!isValidDriver)
                 model.addAttribute("uniqueDriverError", "Водитель " +
                         "с таким номером уже существует!");
+            else
+                model.addAttribute("uniqueDriverError", "no error");
+
             model.addAttribute("driver", driver);
             model.addAttribute("cityList", cityService.getCities());
             return "admin/add-driver";}
@@ -113,14 +118,23 @@ public class AdminDriverController {
         DriverDTO driver = driverConverter.convertDriverToDriverDTO(driverService.getDriver(id));
         model.addAttribute("cityList", cityService.getCities());
         model.addAttribute("driver", driver);
+        model.addAttribute("uniqueDriverError", "no error");
+
         return "admin/update-driver";
     }
 
     @PostMapping("/updateDriver")
     public String updateDriver(@Valid @ModelAttribute("driver") DriverDTO driver,
                                BindingResult bindingResult, Model model){
+        Driver actualDriver = driverService.getDriver(driver.getId());
+        boolean isValidDriver = driverValidator.validDriver(driver);
+        if (bindingResult.hasErrors() || !isValidDriver && !driver.getPhoneNumber().equals(actualDriver.getPhoneNumber())){
+            if (!isValidDriver)
+                model.addAttribute("uniqueDriverError", "Водитель " +
+                        "с таким номером уже существует!");
+            else
+                model.addAttribute("uniqueDriverError", "no error");
 
-        if (bindingResult.hasErrors()){
             model.addAttribute("cityList", cityService.getCities());
             model.addAttribute("driver", driver);
             return "admin/update-driver";

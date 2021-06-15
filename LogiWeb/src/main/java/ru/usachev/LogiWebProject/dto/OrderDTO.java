@@ -1,5 +1,7 @@
 package ru.usachev.LogiWebProject.dto;
 
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 import java.util.List;
 
 public class OrderDTO {
@@ -8,6 +10,7 @@ public class OrderDTO {
     private boolean status;
     private String truck;
     private List<DriverDTO> drivers;
+    @NotBlank(message = "Выберите точку(и)")
     private List<WaypointDTO> waypoints;
 
     public OrderDTO() {

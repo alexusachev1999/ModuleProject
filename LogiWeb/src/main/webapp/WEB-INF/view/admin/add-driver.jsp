@@ -83,14 +83,16 @@
             <div class="form-group">
                 <label class="col-form-label-lg" for="name">Имя</label>
                     <form:input path="name" cssClass="form-control form-control-lg" id="name" placeholder="Имя водителя"/>
-                    <form:errors path="name"/>
+                    <br/>
+                    <form:errors path="name" cssClass="alert alert-danger"/>
             </div>
             <br/><br/>
 
             <div class="form-group">
                 <label class="col-form-label-lg">Фамилия</label>
                 <form:input path="surname" cssClass="form-control form-control-lg" placeholder="Фамилия"/>
-                <form:errors path="surname"/>
+                <br/>
+                <form:errors path="surname" cssClass="alert alert-danger"/>
             </div>
             <br/><br/>
 
@@ -98,12 +100,13 @@
                 <label class="col-form-label-lg">Номер телефона</label>
                 <form:input path="phoneNumber" cssClass="form-control form-control-lg" placeholder="+7-953-146-23-60"/>
                 <br/>
+                <form:errors path="phoneNumber" cssClass="alert alert-danger"/>
+
 
                 <c:if test="${!uniqueDriverError.equals('no error')}">
                     <div class="alert alert-danger" role="alert">
                             ${uniqueDriverError}
                     </div>
-                    <form:errors path="phoneNumber"/>
                 </c:if>
 
             </div>
@@ -116,7 +119,7 @@
                         <form:option value="${city.name}"/>
                     </c:forEach>
                 </form:select>
-                <form:errors path="city"/>
+                <form:errors path="city" cssClass="alert alert-danger"/>
             </div>
             <br/><br/>
 

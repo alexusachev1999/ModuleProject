@@ -1,29 +1,27 @@
 package ru.usachev.LogiWebProject.dto;
 
-import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Pattern;
-import javax.validation.constraints.Positive;
+import org.springframework.format.annotation.NumberFormat;
+
+import javax.validation.constraints.*;
 
 public class TruckDTO {
     private int id;
 
-    @NotBlank
     @Pattern(regexp = "[А-Я]{2}\\d{5}", message = "Используйте следующий шаблон \"АБ12345\"")
     private String registrationNumber;
 
-    @Positive
-    @NotNull
+    @Positive(message = "Должно быть > 0")
+    @NotNull(message = "Не может быть пустым!")
     private int driverShiftDuration;
 
-    @Positive
-    @NotNull
+    @Positive(message = "Должно быть > 0")
+    @NotNull(message = "Не может быть пустым!")
     private int capacity;
 
-    @NotBlank
+    @NotBlank(message = "Не может быть пустым!")
     private String city;
 
-    @NotNull
+    @NotNull(message = "Не может быть пустым!")
     private boolean state;
 
     public TruckDTO() {

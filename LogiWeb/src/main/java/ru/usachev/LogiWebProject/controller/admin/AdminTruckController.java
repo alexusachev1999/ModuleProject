@@ -59,6 +59,8 @@ public class AdminTruckController {
             if (!isValidTruck)
                 model.addAttribute("uniqueError", "Фура с таким номером " +
                         "уже существует!");
+            else
+                model.addAttribute("uniqueError", "no error");
             model.addAttribute("cityList", cityService.getCities());
             return "admin/add-new-truck";}
         else {

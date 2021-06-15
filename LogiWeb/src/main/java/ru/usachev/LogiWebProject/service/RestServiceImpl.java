@@ -9,6 +9,7 @@ import ru.usachev.LogiWebProject.dto.restDTO.DisplayDTO;
 import ru.usachev.LogiWebProject.entity.Order;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 @Service
@@ -29,6 +30,10 @@ public class RestServiceImpl implements RestService {
 
         /* If order is completed, checks data from table completed_order and set to this displayDTO*/
         List<OrderDTO> orders = orderService.getAllOrders();
+
+        /* Reverse list to get last 10 orders*/
+        Collections.reverse(orders);
+
         orderService.getAllCompletedAndUncompletedOrders(orders);
 
 

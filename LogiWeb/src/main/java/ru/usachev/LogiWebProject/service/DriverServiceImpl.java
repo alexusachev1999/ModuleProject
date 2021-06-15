@@ -134,6 +134,11 @@ public class DriverServiceImpl implements DriverService{
     @Transactional
     public List<DriverDTO> getDriversDTOForCompletedOrderByOrderId(int id) {
         List<Driver> drivers = driverDAO.getDriversForCompletedOrderByOrderId(id);
+
+        if (drivers == null)
+            return null;
+
+
         return driverConverter.convertDriverListToDriverDTOList(drivers);
     }
 

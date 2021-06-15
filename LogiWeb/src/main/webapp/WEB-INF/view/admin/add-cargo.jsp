@@ -75,14 +75,14 @@
             <form:hidden path="status"/>
             <form:hidden path="number"/>
 
-            <h2>Груз № ${cargo.number}</h2>
-            <br/>
 
+            <h2>Груз № ${cargo.number}</h2>
             <div class="form-group">
                 <label for="name" class="form-label">Наименование</label>
                 <form:input path="name" cssClass="form-control form-control-lg"
                             placeholder="Название груза"/>
                 <br/>
+                <form:errors cssClass="alert alert-danger" path="name"/>
 
                 <c:if test="${!uniqueErrorMsg.equals('no error')}">
                     <div class="alert alert-danger" role="alert">
@@ -90,8 +90,9 @@
                     </div>
                 </c:if>
 
-                <form:errors cssClass="alert alert-danger" path="name"/>
             </div>
+
+            <br/>
             <br/>
 
             <div class="form-group">
