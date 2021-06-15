@@ -2,11 +2,13 @@ package ru.usachev.LogiWebProject.service;
 
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
 import ru.usachev.LogiWebProject.aop.UpdateAnnotation;
 import ru.usachev.LogiWebProject.converter.DriverConverter;
 import ru.usachev.LogiWebProject.dao.DriverDAO;
 import ru.usachev.LogiWebProject.dto.DriverDTO;
+import ru.usachev.LogiWebProject.dto.restDTO.DriverRestDTO;
 import ru.usachev.LogiWebProject.entity.Driver;
 
 import javax.transaction.Transactional;
@@ -113,4 +115,27 @@ public class DriverServiceImpl implements DriverService{
     public Driver getDriverByPhoneNumber(String phoneNumber) {
         return driverDAO.getDriverByPhoneNumber(phoneNumber);
     }
+
+    @Override
+    @Transactional
+    public DriverRestDTO getDriverRestDTO() {
+        return driverDAO.getDriverRestDTO();
+    }
+
+    @Override
+    @Transactional
+    @Scheduled(cron = "0 0 0 1 * ?")
+    public void zeroingWorkHoursOfDriversOneTimeInMonth() {
+        driverDAO.zeroingWorkHoursOfDriversOneTimeInMonth();
+        log.info("Zeroing work hours of drivers one time in month.");
+    }
+
+    @Override
+    @Transactional
+    public List<DriverDTO> getDriversDTOForCompletedOrderByOrderId(int id) {
+        List<Driver> drivers = driverDAO.getDriversForCompletedOrderByOrderId(id);
+        return driverConverter.convertDriverListToDriverDTOList(drivers);
+    }
+
+
 }

@@ -1,6 +1,7 @@
 package ru.usachev.LogiWebProject.dao;
 
 import ru.usachev.LogiWebProject.dto.WaypointDTO;
+import ru.usachev.LogiWebProject.dto.restDTO.TruckRestDTO;
 import ru.usachev.LogiWebProject.entity.Truck;
 
 import java.util.List;
@@ -23,4 +24,6 @@ public interface TruckDAO {
     Truck getTruckByOrderNumber(int number);
 
     Truck getTruckByDriverId(int id);
+
+    TruckRestDTO getTruckRestDTO();
 }

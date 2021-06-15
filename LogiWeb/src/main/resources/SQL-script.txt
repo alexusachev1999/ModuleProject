@@ -95,6 +95,14 @@ CREATE TABLE logiWeb.waypoints(
                                   FOREIGN KEY (city_unloading_id) REFERENCES logiWeb.cities(id)
 );
 
+CREATE TABLE logiWeb.completed_orders (
+                                id int NOT NULL AUTO_INCREMENT,
+                                number int,
+                                driver_id int,
+                                truck_id int,
+                                PRIMARY KEY (id)
+);
+
 ALTER TABLE logiWeb.cities CONVERT TO CHARACTER SET utf8;
 ALTER TABLE logiWeb.user_roles CONVERT TO CHARACTER SET utf8;
 ALTER TABLE logiWeb.drivers CONVERT TO CHARACTER SET utf8;

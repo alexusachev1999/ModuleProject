@@ -4,6 +4,7 @@ import com.google.gson.Gson;
 import org.apache.commons.io.IOUtils;
 import org.json.JSONArray;
 import org.json.JSONObject;
+import ru.usachev.display.logiweb.dto.DisplayDTO;
 import ru.usachev.display.logiweb.dto.DriverDTO;
 import ru.usachev.display.logiweb.dto.OrderDTO;
 import ru.usachev.display.logiweb.dto.TruckDTO;
@@ -61,5 +62,19 @@ public class RestServiceImpl implements RestService{
             orderDTOList.add(orderDTO);
         }
         return orderDTOList;
+    }
+
+    @Override
+    public DisplayDTO getDisplayDTO() {
+        JSONObject jsonObject = null;
+
+        try {
+            jsonObject = new JSONObject(IOUtils.toString(new URL("http://localhost:8099/logiweb/rest/"), Charset.forName("UTF-8")));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        Gson gson = new Gson();
+        DisplayDTO displayDTO = gson.fromJson(jsonObject.toString(), DisplayDTO.class);
+        return displayDTO;
     }
 }

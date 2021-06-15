@@ -8,6 +8,7 @@ import org.springframework.stereotype.Repository;
 import ru.usachev.LogiWebProject.businessCalculating.BusinessCalculating;
 import ru.usachev.LogiWebProject.controller.admin.AdminDriverController;
 import ru.usachev.LogiWebProject.dto.DriverDTO;
+import ru.usachev.LogiWebProject.dto.restDTO.DriverRestDTO;
 import ru.usachev.LogiWebProject.entity.City;
 import ru.usachev.LogiWebProject.entity.Driver;
 import ru.usachev.LogiWebProject.entity.Order;
@@ -222,5 +223,61 @@ public class DriverDAOImpl implements DriverDAO{
             return null;
         else
             return drivers.get(0);
+    }
+
+    @Override
+    public DriverRestDTO getDriverRestDTO() {
+        Session session = sessionFactory.getCurrentSession();
+        DriverRestDTO driverRestDTO = null;
+
+        List<Driver> drivers = session.createQuery("from Driver").getResultList();
+
+        if (drivers != null){
+            driverRestDTO = new DriverRestDTO();
+            int numberOfDriverNow = drivers.size();
+            driverRestDTO.setNumberOfDriverNow(numberOfDriverNow);
+
+            /* It's get all enabled drivers*/
+            drivers.removeIf(driver -> !driver.getStatus().equalsIgnoreCase("Отдых"));
+            driverRestDTO.setNumberOfEnabledDriver(drivers.size());
+
+            driverRestDTO.setNumberOfDisabledDriver(numberOfDriverNow - drivers.size());
+        }
+
+
+        return driverRestDTO;
+    }
+
+    @Override
+    public void zeroingWorkHoursOfDriversOneTimeInMonth() {
+        Session session = sessionFactory.getCurrentSession();
+
+        List<Driver> drivers = getAllDrivers();
+
+        for(Driver driver: drivers){
+            driver.setWorkedHours(0);
+            session.saveOrUpdate(driver);
+        }
+    }
+
+    @Override
+    public List<Driver> getDriversForCompletedOrderByOrderId(int id) {
+        Session session = sessionFactory.getCurrentSession();
+
+        List<Integer> driversId = session
+                .createNativeQuery("select driver_id from completed_orders where number = ?")
+                .setParameter(1, id)
+                .getResultList();
+
+        if (driversId.isEmpty())
+            return null;
+        else {
+            List<Driver> drivers = new ArrayList<>();
+            for (Integer driverId : driversId){
+                drivers.add(getDriver(driverId));
+            }
+            return drivers;
+        }
+
     }
 }

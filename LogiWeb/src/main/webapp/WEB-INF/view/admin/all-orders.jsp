@@ -87,8 +87,8 @@
 
         <tr>
             <td>${order.number}</td>
-            <td><c:if test="${order.status == false}">Невыполнен</c:if>
-                <c:if test="${order.status == true}">Выполнен</c:if></td>
+            <td><c:if test="${order.status == false}">❌ Невыполнен</c:if>
+                <c:if test="${order.status == true}">✅ Выполнен</c:if></td>
             <td>
                 <ol>
                     <c:forEach var="waypoint" items="${order.waypoints}">

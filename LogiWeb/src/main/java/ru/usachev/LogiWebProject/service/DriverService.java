@@ -1,6 +1,7 @@
 package ru.usachev.LogiWebProject.service;
 
 import ru.usachev.LogiWebProject.dto.DriverDTO;
+import ru.usachev.LogiWebProject.dto.restDTO.DriverRestDTO;
 import ru.usachev.LogiWebProject.entity.Driver;
 
 import java.util.List;
@@ -30,4 +31,10 @@ public interface DriverService {
     void updateDriver(DriverDTO driver);
 
     Driver getDriverByPhoneNumber(String phoneNumber);
+
+    DriverRestDTO getDriverRestDTO();
+
+    void zeroingWorkHoursOfDriversOneTimeInMonth();
+
+    List<DriverDTO> getDriversDTOForCompletedOrderByOrderId(int id);
 }

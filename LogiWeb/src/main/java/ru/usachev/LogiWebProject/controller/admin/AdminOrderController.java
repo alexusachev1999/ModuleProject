@@ -54,8 +54,6 @@ public class AdminOrderController {
     @Autowired
     private WaypointConverter waypointConverter;
 
-    @Autowired
-    private BusinessCalculating businessCalculating;
 
     private OrderDTO orderDTOInMemory = new OrderDTO();
 
@@ -66,6 +64,8 @@ public class AdminOrderController {
     @GetMapping("/orders")
     public String getAllOrders(Model model){
         List<OrderDTO> orders = orderService.getAllOrders();
+        orders = orderService.getAllCompletedAndUncompletedOrders(orders);
+
         model.addAttribute("orders", orders);
 
         return "admin/all-orders";

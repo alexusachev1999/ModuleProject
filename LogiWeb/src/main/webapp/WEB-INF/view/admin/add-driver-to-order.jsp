@@ -70,7 +70,7 @@
 
 <div class="main">
     <div class="col-md-6 col-sm-12">
-        <form:form action="/admin/order/saveDrivers" modelAttribute="order" cssClass="login-form">
+        <form:form action="/logiweb/admin/order/saveDrivers" modelAttribute="order" cssClass="login-form">
 
             <form:hidden path="number"/>
             <form:hidden path="truck"/>

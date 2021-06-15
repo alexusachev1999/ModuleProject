@@ -1,8 +1,4 @@
-package ru.usachev.LogiWebProject.dto.restDTO;
-
-import ru.usachev.LogiWebProject.dto.DriverDTO;
-import ru.usachev.LogiWebProject.dto.OrderDTO;
-import ru.usachev.LogiWebProject.dto.TruckDTO;
+package ru.usachev.display.logiweb.dto;
 
 import java.io.Serializable;
 import java.util.List;

@@ -7,11 +7,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import ru.usachev.LogiWebProject.businessCalculating.BusinessCalculating;
 import ru.usachev.LogiWebProject.dto.WaypointDTO;
+import ru.usachev.LogiWebProject.dto.restDTO.TruckRestDTO;
 import ru.usachev.LogiWebProject.entity.City;
 import ru.usachev.LogiWebProject.entity.Driver;
 import ru.usachev.LogiWebProject.entity.Order;
 import ru.usachev.LogiWebProject.entity.Truck;
-import ru.usachev.LogiWebProject.service.TruckServiceImpl;
 
 import javax.persistence.NoResultException;
 import javax.persistence.Query;
@@ -112,8 +112,20 @@ public class TruckDAOImpl implements TruckDAO{
     @Override
     public Truck getTruckByOrderId(int orderId) {
         Session session = sessionFactory.getCurrentSession();
-        Truck truck = session.createQuery("from Truck where Order.id=:orderId", Truck.class)
-                .setParameter("orderId", orderId).getSingleResult();
+        Order order = session.get(Order.class, orderId);
+        Truck truck;
+
+        if (order.isStatus()){
+            int truckId = (int) session.createNativeQuery("select truck_id from completed_orders where number = ?")
+                    .setParameter(1, orderId)
+                    .getSingleResult();
+
+            truck = session.get(Truck.class, truckId);
+
+        } else {
+            truck = session.createQuery("from Truck where Order.id=:orderId", Truck.class)
+                    .setParameter("orderId", orderId).getSingleResult();
+        }
 
         try {
             return truck;
@@ -140,5 +152,35 @@ public class TruckDAOImpl implements TruckDAO{
         Driver driver = session.get(Driver.class, id);
 
         return driver.getTruck();
+    }
+
+    @Override
+    public TruckRestDTO getTruckRestDTO() {
+        Session session = sessionFactory.getCurrentSession();
+        TruckRestDTO truckRestDTO = null;
+
+        List<Truck> trucks = session.createQuery("from Truck").getResultList();
+
+        if (trucks != null){
+            truckRestDTO = new TruckRestDTO();
+            int numberOfTruckNow = trucks.size();
+
+            trucks.removeIf(truck -> !truck.isState());
+            int numberOfBrokenTruck = numberOfTruckNow - trucks.size();
+
+            int numberOfFreeTruck = (int) trucks
+                    .stream()
+                    .filter(truck -> truck.getOrder() == null)
+                    .count();
+
+            int numberOfInOrderTruck = trucks.size() - numberOfFreeTruck;
+
+            truckRestDTO.setNumberOfTruckNow(numberOfTruckNow);
+            truckRestDTO.setNumberOfFreeTruck(numberOfFreeTruck);
+            truckRestDTO.setNumberOfInOrderTruck(numberOfInOrderTruck);
+            truckRestDTO.setNumberOfBrokenTruck(numberOfBrokenTruck);
+        }
+
+        return truckRestDTO;
     }
 }

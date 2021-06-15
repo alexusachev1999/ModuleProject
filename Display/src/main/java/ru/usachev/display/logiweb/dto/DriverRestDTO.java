@@ -1,4 +1,4 @@
-package ru.usachev.LogiWebProject.dto.restDTO;
+package ru.usachev.display.logiweb.dto;
 
 public class DriverRestDTO {
     private int numberOfDriverNow;

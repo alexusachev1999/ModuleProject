@@ -1,20 +1,18 @@
 package ru.usachev.display.logiweb.view;
 
 import org.primefaces.model.chart.PieChartModel;
-import ru.usachev.display.logiweb.bean.DisplayBean;
 import ru.usachev.display.logiweb.dto.DisplayDTO;
 import ru.usachev.display.logiweb.dto.DriverRestDTO;
+import ru.usachev.display.logiweb.dto.TruckRestDTO;
 import ru.usachev.display.logiweb.service.RestService;
 
-import javax.annotation.ManagedBean;
 import javax.annotation.PostConstruct;
-import javax.enterprise.context.SessionScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
 import java.io.Serializable;
 
 @Named
-public class PieChartDrivers implements Serializable {
+public class PieChartTrucks implements Serializable {
     private PieChartModel pieModel;
 
     @Inject
@@ -22,12 +20,12 @@ public class PieChartDrivers implements Serializable {
 
     DisplayDTO displayDTO;
 
-    DriverRestDTO driverRestDTO;
+    TruckRestDTO truckRestDTO;
 
     @PostConstruct
     public void init() {
         displayDTO = restService.getDisplayDTO();
-        driverRestDTO = displayDTO.getDriverRestDTO();
+        truckRestDTO = displayDTO.getTruckRestDTO();
         createPieModels();
     }
 
@@ -39,9 +37,10 @@ public class PieChartDrivers implements Serializable {
     }
     private void createPieModel() {
         pieModel = new PieChartModel();
-        pieModel.set("Свобоные", driverRestDTO.getNumberOfEnabledDriver());
-        pieModel.set("Занятые", driverRestDTO.getNumberOfDisabledDriver());
-        pieModel.setTitle("Водители");
+        pieModel.set("Свобоные", truckRestDTO.getNumberOfFreeTruck());
+        pieModel.set("Занятые", truckRestDTO.getNumberOfInOrderTruck());
+        pieModel.set("Сломанные", truckRestDTO.getNumberOfBrokenTruck());
+        pieModel.setTitle("Фуры");
         pieModel.setLegendPosition("c");
     }
 }

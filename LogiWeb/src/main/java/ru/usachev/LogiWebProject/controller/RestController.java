@@ -6,8 +6,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import ru.usachev.LogiWebProject.dto.DriverDTO;
 import ru.usachev.LogiWebProject.dto.OrderDTO;
 import ru.usachev.LogiWebProject.dto.TruckDTO;
+import ru.usachev.LogiWebProject.dto.restDTO.DisplayDTO;
 import ru.usachev.LogiWebProject.service.DriverService;
 import ru.usachev.LogiWebProject.service.OrderService;
+import ru.usachev.LogiWebProject.service.RestService;
 import ru.usachev.LogiWebProject.service.TruckService;
 
 import java.util.List;
@@ -17,6 +19,9 @@ import java.util.List;
 public class RestController {
 
     @Autowired
+    private RestService restService;
+
+    @Autowired
     private DriverService driverService;
 
     @Autowired
@@ -24,6 +29,11 @@ public class RestController {
 
     @Autowired
     private OrderService orderService;
+
+    @GetMapping("/")
+    public DisplayDTO getDisplayDTO(){
+        return restService.getDisplayDTO();
+    }
 
     @GetMapping("/drivers")
     public List<DriverDTO> getDrivers(){

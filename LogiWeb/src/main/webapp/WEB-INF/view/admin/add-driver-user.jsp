@@ -88,7 +88,7 @@
                     </div>
                 </c:if>
 
-                <form:errors path="username" cssClass="alert alert-danger"/>
+<%--                <form:errors path="username" cssClass="alert alert-danger"/>--%>
             </div>
             <br/><br/>
 

@@ -6,10 +6,7 @@ import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import ru.usachev.LogiWebProject.dto.OrderDTO;
-import ru.usachev.LogiWebProject.entity.Driver;
-import ru.usachev.LogiWebProject.entity.Order;
-import ru.usachev.LogiWebProject.entity.Truck;
-import ru.usachev.LogiWebProject.entity.Waypoint;
+import ru.usachev.LogiWebProject.entity.*;
 
 import javax.persistence.NoResultException;
 import javax.transaction.Transactional;
@@ -145,8 +142,18 @@ public class OrderDAOImpl implements OrderDAO{
 
         List<Driver> drivers = orderFromDB.getDrivers();
 
+
         for (Driver driver: drivers){
             driver.setOrder(null);
+            driver.setWorkType(false);
+            driver.setStatus("Отдых");
+            driver.setTruck(null);
+
+            /* Set driver his worked hours for this order*/
+            int workedHoursInThisMonth = driver.getWorkedHours();
+            int workedHoursOnThisOrder = driver.getTimeForOrderExecution();
+            driver.setWorkedHours(workedHoursInThisMonth + workedHoursOnThisOrder);
+            driver.setTimeForOrderExecution(0);
             session.saveOrUpdate(driver);
         }
 
@@ -154,17 +161,21 @@ public class OrderDAOImpl implements OrderDAO{
         truck.setOrder(null);
         session.saveOrUpdate(truck);
 
-        List<Waypoint> waypoints = orderFromDB.getWaypoints();
-        for (Waypoint waypoint: waypoints){
-            waypoint.setOrder(null);
-            session.saveOrUpdate(waypoint);
-        }
 
         orderFromDB.setDrivers(null);
         orderFromDB.setTruck(null);
-        orderFromDB.setWaypoints(null);
         orderFromDB.setStatus(true);
 
         session.saveOrUpdate(orderFromDB);
+
+        /* Block of native query which save info about order. This data will be use in restService
+        * for getting information about drivers and truck for completed order */
+        for (Driver driver : drivers){
+            session.createNativeQuery("INSERT INTO completed_orders (number, driver_id, truck_id) VALUES (?,?,?)")
+                    .setParameter(1, orderFromDB.getId())
+                    .setParameter(2, driver.getId())
+                    .setParameter(3, truck.getId())
+                    .executeUpdate();
+        }
     }
 }

@@ -12,6 +12,7 @@ import org.springframework.core.convert.converter.Converter;
 import org.springframework.format.FormatterRegistry;
 import org.springframework.orm.hibernate5.HibernateTransactionManager;
 import org.springframework.orm.hibernate5.LocalSessionFactoryBean;
+import org.springframework.scheduling.annotation.EnableScheduling;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 import org.springframework.web.servlet.ViewResolver;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
@@ -33,6 +34,7 @@ import java.util.Set;
 @ComponentScan(basePackages = "ru.usachev.LogiWebProject.**")
 @EnableWebMvc
 @EnableTransactionManagement
+@EnableScheduling
 @EnableAspectJAutoProxy(proxyTargetClass = true)
 @Import({ SecurityConfig.class})
 public class MyConfig extends WebMvcConfigurationSupport {

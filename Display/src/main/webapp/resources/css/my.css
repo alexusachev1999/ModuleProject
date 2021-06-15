@@ -1,7 +1,18 @@
-.text-main-color{
-    color: #17a2b8;
+.main-div{
+    text-align: center;
+    margin: auto;
+    padding-top: 1%;
+    align-self: center;
+    color: #000000;
+    width: 100%;
+    height: auto;
+    border-bottom: 4px solid #000000;
+    font-size: xxx-large;
 }
 
-p{
-    margin-bottom: 0.3rem;
+h2.center{
+    display: grid;
+    margin-bottom: 20px;
+    align-self: center;
+    justify-self: center;
 }

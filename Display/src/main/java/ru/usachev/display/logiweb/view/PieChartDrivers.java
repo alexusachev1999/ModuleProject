@@ -14,7 +14,7 @@ import javax.inject.Named;
 import java.io.Serializable;
 
 @Named
-public class PieChart implements Serializable {
+public class PieChartDrivers implements Serializable {
     private PieChartModel pieModel;
 
     @Inject

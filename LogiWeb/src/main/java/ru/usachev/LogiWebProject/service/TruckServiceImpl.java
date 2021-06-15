@@ -9,6 +9,7 @@ import ru.usachev.LogiWebProject.converter.TruckConverter;
 import ru.usachev.LogiWebProject.dao.TruckDAO;
 import ru.usachev.LogiWebProject.dto.TruckDTO;
 import ru.usachev.LogiWebProject.dto.WaypointDTO;
+import ru.usachev.LogiWebProject.dto.restDTO.TruckRestDTO;
 import ru.usachev.LogiWebProject.entity.Truck;
 
 import javax.transaction.Transactional;
@@ -90,5 +91,11 @@ public class TruckServiceImpl implements TruckService{
     @Transactional
     public Truck getTruckByDriverId(int id) {
         return truckDAO.getTruckByDriverId(id);
+    }
+
+    @Override
+    @Transactional
+    public TruckRestDTO getTruckRestDTO() {
+        return truckDAO.getTruckRestDTO();
     }
 }

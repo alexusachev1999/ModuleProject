@@ -22,4 +22,6 @@ public interface OrderService {
     void saveDriversToOrder(List<Driver> drivers, OrderDTO orderDTO);
 
     void orderComplete(int orderId);
+
+    List<OrderDTO> getAllCompletedAndUncompletedOrders(List<OrderDTO> orders);
 }

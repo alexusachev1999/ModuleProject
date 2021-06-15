@@ -5,7 +5,9 @@ import org.springframework.stereotype.Service;
 import ru.usachev.LogiWebProject.aop.UpdateAnnotation;
 import ru.usachev.LogiWebProject.converter.OrderConverter;
 import ru.usachev.LogiWebProject.dao.OrderDAO;
+import ru.usachev.LogiWebProject.dto.DriverDTO;
 import ru.usachev.LogiWebProject.dto.OrderDTO;
+import ru.usachev.LogiWebProject.dto.TruckDTO;
 import ru.usachev.LogiWebProject.entity.Driver;
 import ru.usachev.LogiWebProject.entity.Order;
 
@@ -21,6 +23,12 @@ public class OrderServiceImpl implements OrderService {
 
     @Autowired
     private OrderConverter orderConverter;
+
+    @Autowired
+    private DriverService driverService;
+
+    @Autowired
+    private TruckService truckService;
 
     @Override
     @Transactional
@@ -83,5 +91,19 @@ public class OrderServiceImpl implements OrderService {
     @UpdateAnnotation
     public void orderComplete(int orderId) {
         orderDAO.orderComplete(orderId);
+    }
+
+    @Override
+    public List<OrderDTO> getAllCompletedAndUncompletedOrders(List<OrderDTO> orders) {
+        for (OrderDTO orderDTO : orders) {
+            if (orderDTO.getDrivers().isEmpty()) {
+                List<DriverDTO> driverDTOList = driverService
+                        .getDriversDTOForCompletedOrderByOrderId(orderDTO.getId());
+                TruckDTO truckDTO = truckService.getTruckByOrderId(orderDTO.getId());
+                orderDTO.setTruck(truckDTO.getRegistrationNumber());
+                orderDTO.setDrivers(driverDTOList);
+            }
+        }
+        return orders;
     }
 }

@@ -103,9 +103,9 @@
                     <div class="alert alert-danger" role="alert">
                             ${uniqueDriverError}
                     </div>
+                    <form:errors path="phoneNumber"/>
                 </c:if>
 
-                <form:errors path="phoneNumber"/>
             </div>
             <br/><br/>
 

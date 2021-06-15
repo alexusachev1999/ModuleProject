@@ -91,7 +91,7 @@
             <td>${truck.driverShiftDuration}</td>
             <td>${truck.capacity}</td>
             <td>${truck.city}</td>
-            <td><c:if test="${truck.state == false}">Неисправна</c:if>
+            <td><c:if test="${truck.state == false}">❌ Неисправна</c:if>
                 <c:if test="${truck.state == true}">Исправна</c:if></td>
             <td><input type="button" value="Обновить" onclick="window.location.href='${updateButton}'"/></td>
             <td><input type="button" value="Удалить" onclick="window.location.href='${deleteButton}'"/></td>

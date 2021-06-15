@@ -1,16 +1,17 @@
 package ru.usachev.display.logiweb.bean;
 
+import ru.usachev.display.logiweb.dto.DisplayDTO;
+import ru.usachev.display.logiweb.service.RestService;
+
+import javax.inject.Inject;
 import javax.inject.Named;
 
 @Named
-public class ExampleBean {
-    private String text = "Example bean";
+public class DisplayBean {
+    @Inject
+    private RestService restService;
 
-    public String getText() {
-        return text;
-    }
-
-    public void setText(String text) {
-        this.text = text;
+    public DisplayDTO getDisplayDTO(){
+        return restService.getDisplayDTO();
     }
 }

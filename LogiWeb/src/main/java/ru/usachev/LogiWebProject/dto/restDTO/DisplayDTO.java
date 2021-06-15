@@ -1,27 +1,31 @@
-package ru.usachev.LogiWebProject.dto;
+package ru.usachev.LogiWebProject.dto.restDTO;
+
+import ru.usachev.LogiWebProject.dto.DriverDTO;
+import ru.usachev.LogiWebProject.dto.OrderDTO;
+import ru.usachev.LogiWebProject.dto.TruckDTO;
 
 import java.io.Serializable;
 import java.util.List;
 
 public class DisplayDTO implements Serializable {
-    private List<DriverDTO> driverDTOList;
-    private List<TruckDTO> truckDTOList;
+    private DriverRestDTO driverRestDTO;
+    private TruckRestDTO truckRestDTO;
     private List<OrderDTO> orderDTOList;
 
-    public List<DriverDTO> getDriverDTOList() {
-        return driverDTOList;
+    public DriverRestDTO getDriverRestDTO() {
+        return driverRestDTO;
     }
 
-    public void setDriverDTOList(List<DriverDTO> driverDTOList) {
-        this.driverDTOList = driverDTOList;
+    public void setDriverRestDTO(DriverRestDTO driverRestDTO) {
+        this.driverRestDTO = driverRestDTO;
     }
 
-    public List<TruckDTO> getTruckDTOList() {
-        return truckDTOList;
+    public TruckRestDTO getTruckRestDTO() {
+        return truckRestDTO;
     }
 
-    public void setTruckDTOList(List<TruckDTO> truckDTOList) {
-        this.truckDTOList = truckDTOList;
+    public void setTruckRestDTO(TruckRestDTO truckRestDTO) {
+        this.truckRestDTO = truckRestDTO;
     }
 
     public List<OrderDTO> getOrderDTOList() {

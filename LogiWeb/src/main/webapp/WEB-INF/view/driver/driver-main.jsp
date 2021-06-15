@@ -216,30 +216,29 @@
             </c:if>
         </div>
     </div>
+
+    <div class="main-div other-one-line-div">
+        <h3>
+            Текущий рабочий статус:
+            <c:if test="${driver.workType == true}">
+                Заступил в смену
+            </c:if>
+            <c:if test="${driver.workType == false}">
+                Окончил смену
+            </c:if>
+        </h3>
+        <input class="buttonStyle" type="button" value="Изменить рабочий статус" onclick="window.location.href = '/logiweb/driver/changeWorkTimeStatus'">
+    </div>
+    <br/>
+    <br/>
+    <div class="main-div other-one-line-div">
+        <h3>
+            Текущий тип работ: ${driver.status}
+        </h3>
+
+        <input class="buttonStyle" type="button" value="Изменить тип работы" onclick="window.location.href = '/logiweb/driver/changeWorkType'">
+    </div>
 </c:if>
-
-<div class="main-div other-one-line-div">
-    <h3>
-        Текущий рабочий статус:
-        <c:if test="${driver.workType == true}">
-            Заступил в смену
-        </c:if>
-        <c:if test="${driver.workType == false}">
-            Окончил смену
-        </c:if>
-    </h3>
-    <input class="buttonStyle" type="button" value="Изменить рабочий статус" onclick="window.location.href = '/driver/changeWorkTimeStatus'">
-</div>
-<br/>
-<br/>
-<div class="main-div other-one-line-div">
-    <h3>
-        Текущий тип работ: ${driver.status}
-    </h3>
-
-    <input class="buttonStyle" type="button" value="Изменить тип работы" onclick="window.location.href = '/driver/changeWorkType'">
-</div>
-
 
 
 
