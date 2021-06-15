@@ -35,9 +35,18 @@ public class DriverServiceImpl implements DriverService{
 
     @Override
     @Transactional
+    public List<DriverDTO> getAllEnabledDrivers() {
+        List<Driver> drivers = driverDAO.getAllEnabledDrivers();
+        List<DriverDTO> driversDTO = driverConverter.convertDriverListToDriverDTOList(drivers);
+        return driversDTO;
+    }
+
+    @Override
+    @Transactional
     @UpdateAnnotation
     public void saveDriver(DriverDTO driver) {
         Driver convertedDriver = driverConverter.convertDriverDTOToDriver(driver);
+        convertedDriver.setEnabled(true);
         driverDAO.saveDriver(convertedDriver);
         log.info("Save new driver" + driver.getId());
     }

@@ -8,13 +8,15 @@ import java.util.List;
 
 public interface DriverService {
 
-    public List<DriverDTO> getAllDrivers ();
+    List<DriverDTO> getAllDrivers ();
 
-    public void saveDriver(DriverDTO driver);
+    List<DriverDTO> getAllEnabledDrivers ();
 
-    public Driver getDriver(int id);
+    void saveDriver(DriverDTO driver);
 
-    public void deleteDriver(int id);
+    Driver getDriver(int id);
+
+    void deleteDriver(int id);
 
     List<Driver> getDriversByOrderId(int orderId);
 

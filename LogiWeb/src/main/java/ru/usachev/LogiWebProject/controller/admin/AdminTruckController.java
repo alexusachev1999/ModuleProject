@@ -37,7 +37,7 @@ public class AdminTruckController {
 
     @RequestMapping("/trucks")
     private String getAllTrucks(Model model){
-        List<TruckDTO> trucks = truckService.getAllTrucks();
+        List<TruckDTO> trucks = truckService.getAllEnabledTrucks();
         model.addAttribute("trucks", trucks);
         return "/admin/all-trucks";
     }

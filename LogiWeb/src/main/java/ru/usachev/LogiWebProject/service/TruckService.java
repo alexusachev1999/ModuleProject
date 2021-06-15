@@ -8,15 +8,17 @@ import ru.usachev.LogiWebProject.entity.Truck;
 import java.util.List;
 
 public interface TruckService {
-    public List<TruckDTO> getAllTrucks();
+    List<TruckDTO> getAllTrucks();
 
-    public Truck getTruck(int id);
+    List<TruckDTO> getAllEnabledTrucks();
 
-    public void deleteTruck(int id);
+    Truck getTruck(int id);
 
-    public void saveTruck(TruckDTO truck);
+    void deleteTruck(int id);
 
-    public List<TruckDTO> getValidTrucksForOrder(List<WaypointDTO> waypoints);
+    void saveTruck(TruckDTO truck);
+
+    List<TruckDTO> getValidTrucksForOrder(List<WaypointDTO> waypoints);
 
     Truck getTruckByRegistrationNumber(String registrationNumber);
 

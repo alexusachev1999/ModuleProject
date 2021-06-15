@@ -35,6 +35,14 @@ public class TruckServiceImpl implements TruckService{
 
     @Override
     @Transactional
+    public List<TruckDTO> getAllEnabledTrucks() {
+        List<Truck> trucks = truckDAO.getAllEnabledTrucks();
+        List<TruckDTO> trucksDTO = truckConverter.convertTruckListToTruckDTOList(trucks);
+        return trucksDTO;
+    }
+
+    @Override
+    @Transactional
     public Truck getTruck(int id) {
         return truckDAO.getTruck(id);
     }
@@ -51,6 +59,7 @@ public class TruckServiceImpl implements TruckService{
     @UpdateAnnotation
     public void saveTruck(TruckDTO truck) {
         Truck convertedTruck = truckConverter.convertTruckDTOToTruck(truck);
+        convertedTruck.setEnabled(true);
         truckDAO.saveTruck(convertedTruck);
     }
 

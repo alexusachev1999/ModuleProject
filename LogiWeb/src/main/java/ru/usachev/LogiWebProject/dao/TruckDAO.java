@@ -7,15 +7,17 @@ import ru.usachev.LogiWebProject.entity.Truck;
 import java.util.List;
 
 public interface TruckDAO {
-    public List<Truck> getAllTrucks();
+    List<Truck> getAllTrucks();
 
-    public Truck getTruck(int id);
+    List<Truck> getAllEnabledTrucks();
 
-    public void deleteTruck(int id);
+    Truck getTruck(int id);
 
-    public void saveTruck(Truck truck);
+    void deleteTruck(int id);
 
-    public List<Truck> getValidTrucksForOrder(List<WaypointDTO> waypoints);
+    void saveTruck(Truck truck);
+
+    List<Truck> getValidTrucksForOrder(List<WaypointDTO> waypoints);
 
     Truck getTruckByRegistrationNumber(String registrationNumber);
 
@@ -26,4 +28,5 @@ public interface TruckDAO {
     Truck getTruckByDriverId(int id);
 
     TruckRestDTO getTruckRestDTO();
+
 }

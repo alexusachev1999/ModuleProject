@@ -40,6 +40,21 @@ public class TruckDAOImpl implements TruckDAO{
     }
 
     @Override
+    public List<Truck> getAllEnabledTrucks() {
+        Session session = sessionFactory.getCurrentSession();
+
+        List<Truck> trucks = session
+                .createQuery("from Truck where isEnabled = true")
+                .getResultList();
+
+        try {
+            return trucks;
+        } catch (NoResultException e){
+            return null;
+        }
+    }
+
+    @Override
     public Truck getTruck(int id) {
         Session session = sessionFactory.getCurrentSession();
         Truck truck = session.get(Truck.class, id);
@@ -54,9 +69,10 @@ public class TruckDAOImpl implements TruckDAO{
     public void deleteTruck(int id) {
         Session session = sessionFactory.getCurrentSession();
         Truck truck = session.get(Truck.class, id);
-        session.delete(truck);
+        truck.setEnabled(false);
+        session.saveOrUpdate(truck);
 
-        logger.info("delete truck: " + truck.getRegistrationNumber());
+        logger.info("disable truck: " + truck.getRegistrationNumber());
     }
 
     @Override
@@ -81,7 +97,7 @@ public class TruckDAOImpl implements TruckDAO{
         final int needingCapacity;
         needingCapacity = calculating.calculateNeedingCapacityByWaypointList(waypoints);
 
-        Query query = session.createQuery("from Truck where state=true");
+        Query query = session.createQuery("from Truck where state=true and isEnabled = true");
         List<Truck> trucks = query.getResultList();
 
         try {
@@ -156,10 +172,9 @@ public class TruckDAOImpl implements TruckDAO{
 
     @Override
     public TruckRestDTO getTruckRestDTO() {
-        Session session = sessionFactory.getCurrentSession();
         TruckRestDTO truckRestDTO = null;
 
-        List<Truck> trucks = session.createQuery("from Truck").getResultList();
+        List<Truck> trucks = getAllEnabledTrucks();
 
         if (trucks != null){
             truckRestDTO = new TruckRestDTO();

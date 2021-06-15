@@ -41,6 +41,9 @@ public class Driver {
     @Column(name = "work_type")
     private boolean workType;
 
+    @Column(name = "is_enabled")
+    private boolean isEnabled;
+
     @Column(name = "status")
     private String status;
 
@@ -62,6 +65,14 @@ public class Driver {
     private User user;
 
     public Driver() {
+    }
+
+    public boolean isEnabled() {
+        return isEnabled;
+    }
+
+    public void setEnabled(boolean enabled) {
+        isEnabled = enabled;
     }
 
     public int getId() {

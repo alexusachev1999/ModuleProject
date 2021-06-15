@@ -7,13 +7,15 @@ import ru.usachev.LogiWebProject.entity.Driver;
 import java.util.List;
 
 public interface DriverDAO {
-    public List<Driver> getAllDrivers();
+    List<Driver> getAllDrivers();
 
-    public void saveDriver(Driver driver);
+    List<Driver> getAllEnabledDrivers();
 
-    public Driver getDriver(int id);
+    void saveDriver(Driver driver);
 
-    public void deleteDriver(int id);
+    Driver getDriver(int id);
+
+    void deleteDriver(int id);
 
     List<Driver> getDriversByOrderId(int orderId);
 

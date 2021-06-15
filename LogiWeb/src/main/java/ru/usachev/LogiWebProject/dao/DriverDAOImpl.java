@@ -33,7 +33,21 @@ public class DriverDAOImpl implements DriverDAO{
     @Override
     public List<Driver> getAllDrivers() {
         Session session = sessionFactory.getCurrentSession();
+
         List<Driver> drivers = session.createQuery("from Driver", Driver.class).getResultList();
+
+        try {
+            return drivers;
+        } catch (NoResultException e){
+            return null;
+        }
+    }
+
+    @Override
+    public List<Driver> getAllEnabledDrivers() {
+        Session session = sessionFactory.getCurrentSession();
+
+        List<Driver> drivers = session.createQuery("from Driver where isEnabled = true").getResultList();
 
         try {
             return drivers;
@@ -91,8 +105,9 @@ public class DriverDAOImpl implements DriverDAO{
     public void deleteDriver(int id) {
         Session session = sessionFactory.getCurrentSession();
         Driver driver = session.get(Driver.class, id);
-        session.delete(driver);
-        logger.info("delete driver" + driver.getName() + " " + driver.getSurname());
+        driver.setEnabled(false);
+        session.saveOrUpdate(driver);
+        logger.info("disable driver" + driver.getName() + " " + driver.getSurname());
 
     }
 
@@ -122,7 +137,7 @@ public class DriverDAOImpl implements DriverDAO{
 
         int workedHours = businessCalculating.calculateDriverWorkedHoursLimitForOrderByOrderId(orderId);
 
-        Query query = session.createQuery("from Driver where order.id = null ");
+        Query query = session.createQuery("from Driver where order.id = null and isEnabled = true");
 
         List<Driver> drivers = query.getResultList();
 
@@ -227,10 +242,9 @@ public class DriverDAOImpl implements DriverDAO{
 
     @Override
     public DriverRestDTO getDriverRestDTO() {
-        Session session = sessionFactory.getCurrentSession();
         DriverRestDTO driverRestDTO = null;
 
-        List<Driver> drivers = session.createQuery("from Driver").getResultList();
+        List<Driver> drivers = getAllEnabledDrivers();
 
         if (drivers != null){
             driverRestDTO = new DriverRestDTO();

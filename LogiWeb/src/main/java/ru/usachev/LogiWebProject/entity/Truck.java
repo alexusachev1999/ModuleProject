@@ -23,6 +23,9 @@ public class Truck {
     @Column(name = "state")
     private boolean state;
 
+    @Column(name = "is_enabled")
+    private boolean isEnabled;
+
     @Column(name = "capacity")
     private int capacity;
 
@@ -108,5 +111,13 @@ public class Truck {
 
     public void setOrder(Order order) {
         this.order = order;
+    }
+
+    public boolean isEnabled() {
+        return isEnabled;
+    }
+
+    public void setEnabled(boolean enabled) {
+        isEnabled = enabled;
     }
 }
