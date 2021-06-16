@@ -2,6 +2,7 @@ package ru.usachev.LogiWebProject.converter;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+import ru.usachev.LogiWebProject.converter.api.TruckConverter;
 import ru.usachev.LogiWebProject.dto.TruckDTO;
 import ru.usachev.LogiWebProject.entity.Truck;
 import ru.usachev.LogiWebProject.service.CityService;
@@ -10,7 +11,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Component
-public class TruckConverterImpl implements TruckConverter{
+public class TruckConverterImpl implements TruckConverter {
 
     @Autowired
     private CityService cityService;

@@ -1,9 +1,9 @@
-package ru.usachev.LogiWebProject;
+package ru.usachev.LogiWebProject.calculating;
 
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
-import ru.usachev.LogiWebProject.converter.WaypointConverter;
+import ru.usachev.LogiWebProject.converter.api.WaypointConverter;
 import ru.usachev.LogiWebProject.dao.DistanceDAO;
 import ru.usachev.LogiWebProject.dto.WaypointDTO;
 import ru.usachev.LogiWebProject.entity.Distance;

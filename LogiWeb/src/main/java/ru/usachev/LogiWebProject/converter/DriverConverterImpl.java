@@ -2,14 +2,13 @@ package ru.usachev.LogiWebProject.converter;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+import ru.usachev.LogiWebProject.converter.api.DriverConverter;
 import ru.usachev.LogiWebProject.dto.DriverDTO;
-import ru.usachev.LogiWebProject.dto.OrderDTO;
 import ru.usachev.LogiWebProject.entity.Driver;
 import ru.usachev.LogiWebProject.entity.Order;
 import ru.usachev.LogiWebProject.entity.Truck;
 import ru.usachev.LogiWebProject.entity.User;
 import ru.usachev.LogiWebProject.service.CityService;
-import ru.usachev.LogiWebProject.service.OrderService;
 import ru.usachev.LogiWebProject.service.TruckService;
 import ru.usachev.LogiWebProject.service.UserService;
 
@@ -17,7 +16,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Component
-public class DriverConverterImpl implements DriverConverter{
+public class DriverConverterImpl implements DriverConverter {
 
     @Autowired
     private UserService userService;

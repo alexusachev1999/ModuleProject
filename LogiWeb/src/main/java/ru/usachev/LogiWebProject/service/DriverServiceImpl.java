@@ -5,7 +5,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
 import ru.usachev.LogiWebProject.aop.UpdateAnnotation;
-import ru.usachev.LogiWebProject.converter.DriverConverter;
+import ru.usachev.LogiWebProject.converter.api.DriverConverter;
 import ru.usachev.LogiWebProject.dao.DriverDAO;
 import ru.usachev.LogiWebProject.dto.DriverDTO;
 import ru.usachev.LogiWebProject.dto.restDTO.DriverRestDTO;

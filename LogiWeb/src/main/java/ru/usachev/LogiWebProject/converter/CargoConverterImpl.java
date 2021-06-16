@@ -1,11 +1,12 @@
 package ru.usachev.LogiWebProject.converter;
 
 import org.springframework.stereotype.Component;
+import ru.usachev.LogiWebProject.converter.api.CargoConverter;
 import ru.usachev.LogiWebProject.dto.CargoDTO;
 import ru.usachev.LogiWebProject.entity.Cargo;
 
 @Component
-public class CargoConverterImpl implements CargoConverter{
+public class CargoConverterImpl implements CargoConverter {
     @Override
     public Cargo convertCargoDTOToCargo(CargoDTO cargoDTO) {
         Cargo cargo = new Cargo();

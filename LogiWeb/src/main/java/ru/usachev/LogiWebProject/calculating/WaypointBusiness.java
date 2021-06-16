@@ -1,4 +1,4 @@
-package ru.usachev.LogiWebProject;
+package ru.usachev.LogiWebProject.calculating;
 
 import ru.usachev.LogiWebProject.entity.Cargo;
 import ru.usachev.LogiWebProject.entity.City;

@@ -1,4 +1,4 @@
-package ru.usachev.LogiWebProject.converter;
+package ru.usachev.LogiWebProject.converter.api;
 
 import org.springframework.stereotype.Component;
 import ru.usachev.LogiWebProject.dto.UserDTO;

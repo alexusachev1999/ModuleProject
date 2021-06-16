@@ -2,6 +2,9 @@ package ru.usachev.LogiWebProject.converter;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+import ru.usachev.LogiWebProject.converter.api.DriverConverter;
+import ru.usachev.LogiWebProject.converter.api.OrderConverter;
+import ru.usachev.LogiWebProject.converter.api.WaypointConverter;
 import ru.usachev.LogiWebProject.dto.OrderDTO;
 import ru.usachev.LogiWebProject.entity.Order;
 import ru.usachev.LogiWebProject.service.TruckService;
@@ -10,7 +13,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Component
-public class OrderConverterImpl implements OrderConverter{
+public class OrderConverterImpl implements OrderConverter {
 
     @Autowired
     private TruckService truckService;
