@@ -1,13 +1,11 @@
 package ru.usachev.LogiWebProject.controller.admin;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
-import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
-import ru.usachev.LogiWebProject.converter.UserConverter;
+import ru.usachev.LogiWebProject.converter.api.UserConverter;
 import ru.usachev.LogiWebProject.dto.UserDTO;
 import ru.usachev.LogiWebProject.entity.User;
 import ru.usachev.LogiWebProject.service.UserService;

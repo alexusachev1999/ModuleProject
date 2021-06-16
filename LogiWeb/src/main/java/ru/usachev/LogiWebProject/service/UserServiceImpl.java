@@ -3,7 +3,7 @@ package ru.usachev.LogiWebProject.service;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
-import ru.usachev.LogiWebProject.converter.UserConverter;
+import ru.usachev.LogiWebProject.converter.api.UserConverter;
 import ru.usachev.LogiWebProject.dao.UserDAO;
 import ru.usachev.LogiWebProject.dto.UserDTO;
 import ru.usachev.LogiWebProject.entity.User;

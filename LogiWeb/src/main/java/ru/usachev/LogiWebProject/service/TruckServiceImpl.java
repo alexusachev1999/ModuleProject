@@ -1,11 +1,9 @@
 package ru.usachev.LogiWebProject.service;
 
-import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import ru.usachev.LogiWebProject.aop.UpdateAnnotation;
-import ru.usachev.LogiWebProject.controller.admin.AdminOrderController;
-import ru.usachev.LogiWebProject.converter.TruckConverter;
+import ru.usachev.LogiWebProject.converter.api.TruckConverter;
 import ru.usachev.LogiWebProject.dao.TruckDAO;
 import ru.usachev.LogiWebProject.dto.TruckDTO;
 import ru.usachev.LogiWebProject.dto.WaypointDTO;

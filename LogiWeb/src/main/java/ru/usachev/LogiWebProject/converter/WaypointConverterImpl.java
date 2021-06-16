@@ -2,6 +2,7 @@ package ru.usachev.LogiWebProject.converter;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+import ru.usachev.LogiWebProject.converter.api.WaypointConverter;
 import ru.usachev.LogiWebProject.dto.WaypointDTO;
 import ru.usachev.LogiWebProject.entity.Waypoint;
 import ru.usachev.LogiWebProject.service.CargoService;
@@ -12,7 +13,7 @@ import java.util.List;
 
 
 @Component
-public class WaypointConverterImpl implements WaypointConverter{
+public class WaypointConverterImpl implements WaypointConverter {
 
     @Autowired
     private CityService cityService;

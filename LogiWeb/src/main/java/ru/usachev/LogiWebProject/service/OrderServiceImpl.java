@@ -3,7 +3,7 @@ package ru.usachev.LogiWebProject.service;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import ru.usachev.LogiWebProject.aop.UpdateAnnotation;
-import ru.usachev.LogiWebProject.converter.OrderConverter;
+import ru.usachev.LogiWebProject.converter.api.OrderConverter;
 import ru.usachev.LogiWebProject.dao.OrderDAO;
 import ru.usachev.LogiWebProject.dto.DriverDTO;
 import ru.usachev.LogiWebProject.dto.OrderDTO;
@@ -12,7 +12,6 @@ import ru.usachev.LogiWebProject.entity.Driver;
 import ru.usachev.LogiWebProject.entity.Order;
 
 import javax.transaction.Transactional;
-import java.util.ArrayList;
 import java.util.List;
 
 @Service

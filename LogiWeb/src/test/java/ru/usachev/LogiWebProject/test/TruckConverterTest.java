@@ -38,6 +38,7 @@ public class TruckConverterTest {
     @Before
     public void setup(){
         truck = SetupClass.setupTruck();
+        truck.setOrder(null);
         truckDTO = SetupClass.setupTruckDTO();
         truckList = SetupClass.setupTruckList();
         truckDTOList = SetupClass.setupTruckDTOList();

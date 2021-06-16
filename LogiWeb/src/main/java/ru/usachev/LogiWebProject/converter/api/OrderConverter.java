@@ -1,4 +1,4 @@
-package ru.usachev.LogiWebProject.converter;
+package ru.usachev.LogiWebProject.converter.api;
 
 import ru.usachev.LogiWebProject.dto.OrderDTO;
 import ru.usachev.LogiWebProject.entity.Order;

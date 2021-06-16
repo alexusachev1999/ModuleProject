@@ -14,6 +14,18 @@ public class SetupClass {
         return city;
     }
 
+    public static City setupCityOfLoading() {
+        City city = new City();
+        city.setName("CityOfLoading");
+        return city;
+    }
+
+    public static City setupCityOfUnloading() {
+        City city = new City();
+        city.setName("CityOfUnloading");
+        return city;
+    }
+
     public static User setupUser(){
         User user = new User();
         user.setUsername("test");
@@ -28,6 +40,7 @@ public class SetupClass {
         truck.setState(true);
         truck.setDriverShiftDuration(9);
         truck.setCity(setupCity());
+        truck.setOrder(setupNewOrder());
         return truck;
     }
 
@@ -176,5 +189,22 @@ public class SetupClass {
         return orderDTOList;
     }
 
+    public static Waypoint setupWaypoint() {
+        Waypoint waypoint = new Waypoint();
+        waypoint.setId(1);
+        waypoint.setCityUnloading(setupCityOfUnloading());
+        waypoint.setCityLoading(setupCityOfLoading());
+        waypoint.setCargo(setupCargo());
+        return waypoint;
+    }
 
+    public static WaypointDTO setupWaypointDTO() {
+        WaypointDTO waypoint = new WaypointDTO();
+        waypoint.setId(1);
+        waypoint.setCityUnloading(setupCityOfUnloading().getName());
+        waypoint.setCityLoading(setupCityOfLoading().getName());
+        waypoint.setCargo(setupCargo().getName());
+        waypoint.setCargoStatus(setupCargo().getStatus());
+        return waypoint;
+    }
 }

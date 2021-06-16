@@ -95,7 +95,6 @@ public class MyConfig extends WebMvcConfigurationSupport {
 
     @Override
     public void addFormatters(FormatterRegistry registry) {
-//        registry.addConverter(new StringArrayToWaypointDTOList());
         registry.addConverter(new StringToWaypointDAO());
     }
 }

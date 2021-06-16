@@ -1,4 +1,4 @@
-package ru.usachev.LogiWebProject.converter;
+package ru.usachev.LogiWebProject.converter.api;
 
 import ru.usachev.LogiWebProject.dto.DriverDTO;
 import ru.usachev.LogiWebProject.entity.Driver;

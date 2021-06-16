@@ -3,7 +3,7 @@ package ru.usachev.LogiWebProject.service;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import ru.usachev.LogiWebProject.aop.UpdateAnnotation;
-import ru.usachev.LogiWebProject.converter.CargoConverter;
+import ru.usachev.LogiWebProject.converter.api.CargoConverter;
 import ru.usachev.LogiWebProject.dao.CargoDAO;
 import ru.usachev.LogiWebProject.dto.CargoDTO;
 import ru.usachev.LogiWebProject.entity.Cargo;
