@@ -2,6 +2,7 @@ package ru.usachev.LogiWebProject.dto;
 
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Positive;
+import java.util.Objects;
 
 public class UserDTO {
 
@@ -49,5 +50,18 @@ public class UserDTO {
 
     public void setUserRole(String userRole) {
         this.userRole = userRole;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        UserDTO userDTO = (UserDTO) o;
+        return enabled == userDTO.enabled && Objects.equals(username, userDTO.username) && Objects.equals(password, userDTO.password) && Objects.equals(userRole, userDTO.userRole);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(username, password, enabled, userRole);
     }
 }

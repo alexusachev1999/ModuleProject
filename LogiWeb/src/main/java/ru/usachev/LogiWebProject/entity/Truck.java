@@ -4,6 +4,7 @@ import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Pattern;
 import java.util.List;
+import java.util.Objects;
 
 @Entity
 @Table(name = "trucks")
@@ -119,5 +120,18 @@ public class Truck {
 
     public void setEnabled(boolean enabled) {
         isEnabled = enabled;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Truck truck = (Truck) o;
+        return id == truck.id && driverShiftDuration == truck.driverShiftDuration && state == truck.state && isEnabled == truck.isEnabled && capacity == truck.capacity && Objects.equals(registrationNumber, truck.registrationNumber) && Objects.equals(city, truck.city) && Objects.equals(drivers, truck.drivers) && Objects.equals(order, truck.order);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, registrationNumber, driverShiftDuration, state, isEnabled, capacity, city, drivers, order);
     }
 }

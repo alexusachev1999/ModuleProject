@@ -144,30 +144,6 @@
     <h2>Личный номер: ${driver.phoneNumber}</h2>
 </div>
 
-<c:if test="${isDriverListEmpty == true}">
-    <div class="main-div other-one-line-div">
-        <h2>Нет соводителей</h2>
-    </div>
-</c:if>
-
-<c:if test="${isDriverListEmpty == false}">
-    <div class="main-div other-one-line-div">
-        <table>
-            <caption>Со-водители</caption>
-            <tr>
-                <th>Имя водителя</th>
-                <th>Личный номер</th>
-            </tr>
-            <c:forEach var="driver" items="${drivers}">
-                <tr>
-                    <td>${driver.name} ${driver.surname}</td>
-                    <td>${driver.phoneNumber}</td>
-                </tr>
-            </c:forEach>
-        </table>
-    </div>
-</c:if>
-
 <c:if test="${isDriverHasOrder == false}">
     <div class="main-div other-one-line-div">
         <h2>Нет текущего заказа</h2>
@@ -175,6 +151,32 @@
 </c:if>
 
 <c:if test="${isDriverHasOrder == true}">
+    <c:if test="${isDriverListEmpty == true}">
+        <div class="main-div other-one-line-div">
+            <h2>Нет соводителей</h2>
+        </div>
+    </c:if>
+
+    <c:if test="${isDriverListEmpty == false}">
+        <div class="main-div other-one-line-div">
+            <div class="center">
+                <h1 style="font-size: 40px;">Со-водители</h1>
+                <table>
+                    <tr style="font-size: 30px">
+                        <th>Имя водителя</th>
+                        <th>Личный номер</th>
+                    </tr>
+                    <c:forEach var="driver" items="${drivers}">
+                        <tr style="font-size: 30px">
+                            <td>${driver.name} ${driver.surname}</td>
+                            <td>${driver.phoneNumber}</td>
+                        </tr>
+                    </c:forEach>
+                </table>
+            </div>
+        </div>
+    </c:if>
+
     <div class="main-div other-one-line-div">
         <h2>Рег. номер фуры: ${order.truck}</h2>
     </div>

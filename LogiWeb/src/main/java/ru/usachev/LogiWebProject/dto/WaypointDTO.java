@@ -1,5 +1,7 @@
 package ru.usachev.LogiWebProject.dto;
 
+import java.util.Objects;
+
 public class WaypointDTO {
 
     private int id;
@@ -54,5 +56,18 @@ public class WaypointDTO {
     @Override
     public String toString() {
         return cargo + " из " + cityLoading + ", в " + cityUnloading;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        WaypointDTO that = (WaypointDTO) o;
+        return id == that.id && Objects.equals(cargo, that.cargo) && Objects.equals(cargoStatus, that.cargoStatus) && Objects.equals(cityLoading, that.cityLoading) && Objects.equals(cityUnloading, that.cityUnloading);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, cargo, cargoStatus, cityLoading, cityUnloading);
     }
 }

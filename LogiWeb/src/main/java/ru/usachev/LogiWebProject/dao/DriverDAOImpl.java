@@ -5,20 +5,17 @@ import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
-import ru.usachev.LogiWebProject.businessCalculating.BusinessCalculating;
-import ru.usachev.LogiWebProject.controller.admin.AdminDriverController;
+import ru.usachev.LogiWebProject.BusinessCalculating;
 import ru.usachev.LogiWebProject.dto.DriverDTO;
 import ru.usachev.LogiWebProject.dto.restDTO.DriverRestDTO;
 import ru.usachev.LogiWebProject.entity.City;
 import ru.usachev.LogiWebProject.entity.Driver;
 import ru.usachev.LogiWebProject.entity.Order;
-import ru.usachev.LogiWebProject.entity.Waypoint;
 
 import javax.persistence.NoResultException;
 import javax.persistence.Query;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.Collectors;
 
 @Repository
 public class DriverDAOImpl implements DriverDAO{

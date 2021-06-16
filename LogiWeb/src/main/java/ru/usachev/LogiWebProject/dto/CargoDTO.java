@@ -4,6 +4,7 @@ import org.hibernate.validator.constraints.UniqueElements;
 
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Positive;
+import java.util.Objects;
 
 public class CargoDTO {
     private int id;
@@ -61,5 +62,18 @@ public class CargoDTO {
 
     public void setStatus(String status) {
         this.status = status;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        CargoDTO cargoDTO = (CargoDTO) o;
+        return id == cargoDTO.id && number == cargoDTO.number && weight == cargoDTO.weight && Objects.equals(name, cargoDTO.name) && Objects.equals(status, cargoDTO.status);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, number, name, weight, status);
     }
 }

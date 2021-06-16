@@ -3,6 +3,7 @@ package ru.usachev.LogiWebProject.dto;
 import org.springframework.format.annotation.NumberFormat;
 
 import javax.validation.constraints.*;
+import java.util.Objects;
 
 public class TruckDTO {
     private int id;
@@ -78,5 +79,18 @@ public class TruckDTO {
     @Override
     public String toString() {
         return "Рег. номер: " + registrationNumber;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        TruckDTO truckDTO = (TruckDTO) o;
+        return id == truckDTO.id && driverShiftDuration == truckDTO.driverShiftDuration && capacity == truckDTO.capacity && state == truckDTO.state && Objects.equals(registrationNumber, truckDTO.registrationNumber) && Objects.equals(city, truckDTO.city);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, registrationNumber, driverShiftDuration, capacity, city, state);
     }
 }

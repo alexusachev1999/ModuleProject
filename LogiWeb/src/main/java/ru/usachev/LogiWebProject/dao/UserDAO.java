@@ -1,7 +1,6 @@
 package ru.usachev.LogiWebProject.dao;
 
 
-import ru.usachev.LogiWebProject.dto.UserDTO;
 import ru.usachev.LogiWebProject.entity.User;
 
 import java.util.List;

@@ -4,6 +4,7 @@ import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
 import java.util.Map;
+import java.util.Objects;
 
 @Entity
 @Table(name = "drivers")
@@ -169,6 +170,19 @@ public class Driver {
 
     public void setTimeForOrderExecution(int timeForOrderExecution) {
         this.timeForOrderExecution = timeForOrderExecution;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Driver driver = (Driver) o;
+        return id == driver.id && timeForOrderExecution == driver.timeForOrderExecution && workedHours == driver.workedHours && workType == driver.workType && isEnabled == driver.isEnabled && Objects.equals(name, driver.name) && Objects.equals(surname, driver.surname) && Objects.equals(phoneNumber, driver.phoneNumber) && Objects.equals(status, driver.status) && Objects.equals(city, driver.city) && Objects.equals(truck, driver.truck) && Objects.equals(order, driver.order) && Objects.equals(user, driver.user);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, name, surname, phoneNumber, timeForOrderExecution, workedHours, workType, isEnabled, status, city, truck, order, user);
     }
 }
 

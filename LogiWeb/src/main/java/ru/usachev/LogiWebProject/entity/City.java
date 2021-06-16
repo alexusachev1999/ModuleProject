@@ -3,6 +3,7 @@ package ru.usachev.LogiWebProject.entity;
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 @Entity
 @Table(name = "cities")
@@ -105,5 +106,18 @@ public class City {
 
     public void setDrivers(List<Driver> drivers) {
         this.drivers = drivers;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        City city = (City) o;
+        return id == city.id && Objects.equals(name, city.name) && Objects.equals(loadingWaypoints, city.loadingWaypoints) && Objects.equals(unloadingWaypoints, city.unloadingWaypoints) && Objects.equals(trucks, city.trucks) && Objects.equals(drivers, city.drivers);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, name, loadingWaypoints, unloadingWaypoints, trucks, drivers);
     }
 }

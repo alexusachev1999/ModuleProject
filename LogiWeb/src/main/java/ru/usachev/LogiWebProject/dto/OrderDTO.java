@@ -3,6 +3,7 @@ package ru.usachev.LogiWebProject.dto;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import java.util.List;
+import java.util.Objects;
 
 public class OrderDTO {
     private int id;
@@ -62,5 +63,18 @@ public class OrderDTO {
 
     public void setWaypoints(List<WaypointDTO> waypoints) {
         this.waypoints = waypoints;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        OrderDTO orderDTO = (OrderDTO) o;
+        return id == orderDTO.id && number == orderDTO.number && status == orderDTO.status && Objects.equals(truck, orderDTO.truck) && Objects.equals(drivers, orderDTO.drivers) && Objects.equals(waypoints, orderDTO.waypoints);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, number, status, truck, drivers, waypoints);
     }
 }

@@ -1,13 +1,11 @@
-package ru.usachev.LogiWebProject.businessCalculating;
+package ru.usachev.LogiWebProject;
 
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.scheduling.annotation.Schedules;
 import org.springframework.stereotype.Component;
 import ru.usachev.LogiWebProject.converter.WaypointConverter;
 import ru.usachev.LogiWebProject.dao.DistanceDAO;
 import ru.usachev.LogiWebProject.dto.WaypointDTO;
-import ru.usachev.LogiWebProject.entity.City;
 import ru.usachev.LogiWebProject.entity.Distance;
 import ru.usachev.LogiWebProject.entity.Order;
 import ru.usachev.LogiWebProject.entity.Waypoint;

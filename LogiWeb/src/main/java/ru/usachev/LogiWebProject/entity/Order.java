@@ -3,6 +3,7 @@ package ru.usachev.LogiWebProject.entity;
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 @Entity
 @Table(name = "orders")
@@ -97,5 +98,18 @@ public class Order {
 
     public void setNumber(int number) {
         this.number = number;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Order order = (Order) o;
+        return id == order.id && number == order.number && status == order.status && Objects.equals(truck, order.truck) && Objects.equals(waypoints, order.waypoints) && Objects.equals(drivers, order.drivers);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, number, status, truck, waypoints, drivers);
     }
 }

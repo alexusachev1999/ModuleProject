@@ -1,6 +1,7 @@
 package ru.usachev.LogiWebProject.dto;
 
 import javax.validation.constraints.*;
+import java.util.Objects;
 
 public class DriverDTO {
     private int id;
@@ -126,5 +127,18 @@ public class DriverDTO {
 
     public void setTimeForOrderExecution(int timeForOrderExecution) {
         this.timeForOrderExecution = timeForOrderExecution;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        DriverDTO driverDTO = (DriverDTO) o;
+        return id == driverDTO.id && workedHours == driverDTO.workedHours && timeForOrderExecution == driverDTO.timeForOrderExecution && workType == driverDTO.workType && Objects.equals(name, driverDTO.name) && Objects.equals(surname, driverDTO.surname) && Objects.equals(phoneNumber, driverDTO.phoneNumber) && Objects.equals(status, driverDTO.status) && Objects.equals(city, driverDTO.city) && Objects.equals(truck, driverDTO.truck) && Objects.equals(user, driverDTO.user);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, name, surname, phoneNumber, workedHours, timeForOrderExecution, workType, status, city, truck, user);
     }
 }

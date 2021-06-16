@@ -1,10 +1,7 @@
 package ru.usachev.LogiWebProject.entity;
 
 import javax.persistence.*;
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
 
 @Entity
 @Table(name = "users")
@@ -68,5 +65,18 @@ public class User {
 
     public void setUserRole(List<UserRole> userRole) {
         this.userRole = userRole;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        User user = (User) o;
+        return enabled == user.enabled && Objects.equals(username, user.username) && Objects.equals(password, user.password) && Objects.equals(userRole, user.userRole) && Objects.equals(driver, user.driver);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(username, password, enabled, userRole, driver);
     }
 }

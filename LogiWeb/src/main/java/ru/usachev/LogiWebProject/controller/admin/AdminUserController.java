@@ -53,13 +53,6 @@ public class AdminUserController {
         }
     }
 
-    @RequestMapping("/updateUser")
-    public String updateUser(@RequestParam("userName") String userName, Model model){
-        UserDTO userDTO = userConverter.convertUserToUserDTO(userService.getUserByUsername(userName));
-        model.addAttribute("user", userDTO);
-        return "admin/add-user";
-    }
-
     @RequestMapping("/deleteUser")
     public String deleteUser(@RequestParam(name = "userName") String userName){
         User user = userService.getUserByUsername(userName);

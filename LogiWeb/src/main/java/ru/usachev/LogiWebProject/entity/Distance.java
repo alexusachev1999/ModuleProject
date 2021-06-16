@@ -1,6 +1,7 @@
 package ru.usachev.LogiWebProject.entity;
 
 import javax.persistence.*;
+import java.util.Objects;
 
 @Entity
 @Table(name = "map")
@@ -54,5 +55,18 @@ public class Distance {
 
     public void setDistance(int distance) {
         this.distance = distance;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Distance distance1 = (Distance) o;
+        return id == distance1.id && distance == distance1.distance && Objects.equals(city1, distance1.city1) && Objects.equals(city2, distance1.city2);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, city1, city2, distance);
     }
 }

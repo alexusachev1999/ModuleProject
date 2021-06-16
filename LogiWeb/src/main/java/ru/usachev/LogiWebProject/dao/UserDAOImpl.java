@@ -6,8 +6,10 @@ import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import ru.usachev.LogiWebProject.controller.admin.AdminDriverController;
+import ru.usachev.LogiWebProject.entity.Driver;
 import ru.usachev.LogiWebProject.entity.User;
 import ru.usachev.LogiWebProject.entity.UserRole;
+import ru.usachev.LogiWebProject.service.DriverService;
 
 import javax.persistence.NoResultException;
 import javax.transaction.Transactional;
@@ -19,7 +21,6 @@ import java.util.stream.Collectors;
 public class UserDAOImpl implements UserDAO {
 
 	private static Logger logger = Logger.getLogger(UserDAOImpl.class);
-
 
 	@Autowired
 	private SessionFactory sessionFactory;
@@ -69,9 +70,22 @@ public class UserDAOImpl implements UserDAO {
 	@Override
 	public void deleteUser(User user) {
 		Session session = sessionFactory.getCurrentSession();
-		session.delete(user);
+		user.setEnabled(false);
 
-		logger.info("delete user: " + user.getUsername());
+		session.update(user);
+		logger.info("disable user: " + user.getUsername());
+
+
+		List<Driver> drivers = session.createQuery("from Driver where user=:user")
+				.setParameter("user", user)
+				.getResultList();
+
+		if (!drivers.isEmpty()) {
+			Driver driver = drivers.get(0);
+			driver.setEnabled(false);
+			session.saveOrUpdate(driver);
+			logger.info("disable driver: " + driver.getName() + " " + driver.getSurname());
+		}
 	}
 
 	@Override
