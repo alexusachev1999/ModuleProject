@@ -3,6 +3,9 @@ package ru.usachev.LogiWebProject.calculating;
 import ru.usachev.LogiWebProject.entity.Cargo;
 import ru.usachev.LogiWebProject.entity.City;
 
+/**
+ * Utility class for BusinessCalculating class
+ */
 public class WaypointBusiness {
     private City city;
     private boolean isLoading;

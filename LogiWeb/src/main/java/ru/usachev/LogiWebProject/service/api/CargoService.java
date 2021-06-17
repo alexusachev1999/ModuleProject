@@ -1,19 +1,24 @@
-package ru.usachev.LogiWebProject.service;
+package ru.usachev.LogiWebProject.service.api;
 
 import ru.usachev.LogiWebProject.dto.CargoDTO;
 import ru.usachev.LogiWebProject.entity.Cargo;
 
 import java.util.List;
 
+/**
+ * Service class for getting data from DB by DAO class
+ * Convert it by converter class
+ * And Send to controller
+ *
+ * @author Alex Usachev
+ */
 public interface CargoService {
 
-    public List<Cargo> getAllCargoes();
+    List<Cargo> getAllCargoes();
 
-    public void saveCargo(CargoDTO cargo);
+    void saveCargo(CargoDTO cargo);
 
-    public void deleteCargo(int id);
-
-    public Cargo getCargo(int id);
+    Cargo getCargo(int id);
 
     Cargo getCargoByName(String cargoName);
 

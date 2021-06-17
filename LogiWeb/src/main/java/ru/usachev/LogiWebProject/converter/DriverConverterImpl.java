@@ -8,9 +8,9 @@ import ru.usachev.LogiWebProject.entity.Driver;
 import ru.usachev.LogiWebProject.entity.Order;
 import ru.usachev.LogiWebProject.entity.Truck;
 import ru.usachev.LogiWebProject.entity.User;
-import ru.usachev.LogiWebProject.service.CityService;
-import ru.usachev.LogiWebProject.service.TruckService;
-import ru.usachev.LogiWebProject.service.UserService;
+import ru.usachev.LogiWebProject.service.api.CityService;
+import ru.usachev.LogiWebProject.service.api.TruckService;
+import ru.usachev.LogiWebProject.service.api.UserService;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -30,29 +30,29 @@ public class DriverConverterImpl implements DriverConverter {
 
 
     @Override
-    public Driver convertDriverDTOToDriver(DriverDTO driver) {
+    public Driver convertDriverDTOToDriver(DriverDTO driverDTO) {
         Driver convertedDriver = new Driver();
 
-        convertedDriver.setId(driver.getId());
-        convertedDriver.setName(driver.getName());
-        convertedDriver.setSurname(driver.getSurname());
-        convertedDriver.setPhoneNumber(driver.getPhoneNumber());
-        convertedDriver.setStatus(driver.getStatus());
-        convertedDriver.setWorkedHours(driver.getWorkedHours());
-        convertedDriver.setWorkType(driver.isWorkType());
-        convertedDriver.setTimeForOrderExecution(driver.getTimeForOrderExecution());
+        convertedDriver.setId(driverDTO.getId());
+        convertedDriver.setName(driverDTO.getName());
+        convertedDriver.setSurname(driverDTO.getSurname());
+        convertedDriver.setPhoneNumber(driverDTO.getPhoneNumber());
+        convertedDriver.setStatus(driverDTO.getStatus());
+        convertedDriver.setWorkedHours(driverDTO.getWorkedHours());
+        convertedDriver.setWorkType(driverDTO.isWorkType());
+        convertedDriver.setTimeForOrderExecution(driverDTO.getTimeForOrderExecution());
 
 
-        if (driver.getTruck() != null){
-        Truck truck = truckService.getTruckByRegistrationNumber(driver.getTruck());
+        if (driverDTO.getTruck() != null){
+        Truck truck = truckService.getTruckByRegistrationNumber(driverDTO.getTruck());
         Order order = truck.getOrder();
         convertedDriver.setOrder(order);
         convertedDriver.setTruck(truck);
         }
 
 
-        convertedDriver.setCity(cityService.getCityByName(driver.getCity()));
-        convertedDriver.setUser(userService.getUserByUsername(driver.getUser()));
+        convertedDriver.setCity(cityService.getCityByName(driverDTO.getCity()));
+        convertedDriver.setUser(userService.getUserByUsername(driverDTO.getUser()));
         return convertedDriver;
     }
 

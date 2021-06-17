@@ -6,6 +6,7 @@ import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import ru.usachev.LogiWebProject.calculating.BusinessCalculating;
+import ru.usachev.LogiWebProject.dao.api.TruckDAO;
 import ru.usachev.LogiWebProject.dto.WaypointDTO;
 import ru.usachev.LogiWebProject.dto.restDTO.TruckRestDTO;
 import ru.usachev.LogiWebProject.entity.City;
@@ -18,7 +19,7 @@ import javax.persistence.Query;
 import java.util.List;
 
 @Repository
-public class TruckDAOImpl implements TruckDAO{
+public class TruckDAOImpl implements TruckDAO {
 
     private static Logger logger = Logger.getLogger(TruckDAOImpl.class);
 

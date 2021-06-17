@@ -9,7 +9,7 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import ru.usachev.LogiWebProject.dao.UserDAO;
+import ru.usachev.LogiWebProject.dao.api.UserDAO;
 import ru.usachev.LogiWebProject.entity.UserRole;
 
 import java.util.ArrayList;

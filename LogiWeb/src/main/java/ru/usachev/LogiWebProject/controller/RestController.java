@@ -7,10 +7,10 @@ import ru.usachev.LogiWebProject.dto.DriverDTO;
 import ru.usachev.LogiWebProject.dto.OrderDTO;
 import ru.usachev.LogiWebProject.dto.TruckDTO;
 import ru.usachev.LogiWebProject.dto.restDTO.DisplayDTO;
-import ru.usachev.LogiWebProject.service.DriverService;
-import ru.usachev.LogiWebProject.service.OrderService;
-import ru.usachev.LogiWebProject.service.RestService;
-import ru.usachev.LogiWebProject.service.TruckService;
+import ru.usachev.LogiWebProject.service.api.DriverService;
+import ru.usachev.LogiWebProject.service.api.OrderService;
+import ru.usachev.LogiWebProject.service.api.RestService;
+import ru.usachev.LogiWebProject.service.api.TruckService;
 
 import java.util.List;
 

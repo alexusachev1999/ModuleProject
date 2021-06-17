@@ -2,12 +2,9 @@ package ru.usachev.LogiWebProject.validation;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
-import ru.usachev.LogiWebProject.dto.CargoDTO;
 import ru.usachev.LogiWebProject.dto.UserDTO;
-import ru.usachev.LogiWebProject.entity.Cargo;
 import ru.usachev.LogiWebProject.entity.User;
-import ru.usachev.LogiWebProject.service.CargoService;
-import ru.usachev.LogiWebProject.service.UserService;
+import ru.usachev.LogiWebProject.service.api.UserService;
 
 import javax.persistence.NoResultException;
 

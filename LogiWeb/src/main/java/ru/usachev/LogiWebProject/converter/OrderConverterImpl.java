@@ -7,7 +7,7 @@ import ru.usachev.LogiWebProject.converter.api.OrderConverter;
 import ru.usachev.LogiWebProject.converter.api.WaypointConverter;
 import ru.usachev.LogiWebProject.dto.OrderDTO;
 import ru.usachev.LogiWebProject.entity.Order;
-import ru.usachev.LogiWebProject.service.TruckService;
+import ru.usachev.LogiWebProject.service.api.TruckService;
 
 import java.util.ArrayList;
 import java.util.List;

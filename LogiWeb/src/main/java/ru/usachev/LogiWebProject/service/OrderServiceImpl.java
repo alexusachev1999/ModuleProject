@@ -4,12 +4,15 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import ru.usachev.LogiWebProject.aop.UpdateAnnotation;
 import ru.usachev.LogiWebProject.converter.api.OrderConverter;
-import ru.usachev.LogiWebProject.dao.OrderDAO;
+import ru.usachev.LogiWebProject.dao.api.OrderDAO;
 import ru.usachev.LogiWebProject.dto.DriverDTO;
 import ru.usachev.LogiWebProject.dto.OrderDTO;
 import ru.usachev.LogiWebProject.dto.TruckDTO;
 import ru.usachev.LogiWebProject.entity.Driver;
 import ru.usachev.LogiWebProject.entity.Order;
+import ru.usachev.LogiWebProject.service.api.DriverService;
+import ru.usachev.LogiWebProject.service.api.OrderService;
+import ru.usachev.LogiWebProject.service.api.TruckService;
 
 import javax.transaction.Transactional;
 import java.util.List;
@@ -71,18 +74,6 @@ public class OrderServiceImpl implements OrderService {
         Order order = orderDAO.getOrderByUsername(username);
         OrderDTO orderDTO = orderConverter.convertOrderToOrderDTO(order);
         return orderDTO;
-    }
-
-    @Override
-    @Transactional
-    @UpdateAnnotation
-    public void saveDriversToOrder(List<Driver> drivers, OrderDTO orderDTO) {
-        Order order = orderConverter.convertOrderDTOToOrder(orderDTO);
-        for (Driver driver: drivers){
-            driver.setOrder(order);
-            driver.setTruck(order.getTruck());
-        }
-        orderDAO.saveDriversToOrder(drivers, order);
     }
 
     @Override

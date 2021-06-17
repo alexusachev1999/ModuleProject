@@ -14,7 +14,7 @@ import ru.usachev.LogiWebProject.dto.DriverDTO;
 import ru.usachev.LogiWebProject.dto.OrderDTO;
 import ru.usachev.LogiWebProject.dto.WaypointDTO;
 import ru.usachev.LogiWebProject.entity.*;
-import ru.usachev.LogiWebProject.service.TruckService;
+import ru.usachev.LogiWebProject.service.api.TruckService;
 
 import java.util.List;
 

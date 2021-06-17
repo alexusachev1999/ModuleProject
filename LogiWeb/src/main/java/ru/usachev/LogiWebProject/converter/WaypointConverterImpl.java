@@ -5,8 +5,8 @@ import org.springframework.stereotype.Component;
 import ru.usachev.LogiWebProject.converter.api.WaypointConverter;
 import ru.usachev.LogiWebProject.dto.WaypointDTO;
 import ru.usachev.LogiWebProject.entity.Waypoint;
-import ru.usachev.LogiWebProject.service.CargoService;
-import ru.usachev.LogiWebProject.service.CityService;
+import ru.usachev.LogiWebProject.service.api.CargoService;
+import ru.usachev.LogiWebProject.service.api.CityService;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -21,13 +21,13 @@ public class WaypointConverterImpl implements WaypointConverter {
     @Autowired
     private CargoService cargoService;
 
-    public Waypoint convertWaypointDTOToWaypoint(WaypointDTO waypoint) {
+    public Waypoint convertWaypointDTOToWaypoint(WaypointDTO waypointDTO) {
         Waypoint convertedWaypoint = new Waypoint();
 
-        convertedWaypoint.setId(waypoint.getId());
-        convertedWaypoint.setCityLoading(cityService.getCityByName(waypoint.getCityLoading()));
-        convertedWaypoint.setCityUnloading(cityService.getCityByName(waypoint.getCityUnloading()));
-        convertedWaypoint.setCargo(cargoService.getCargoByName(waypoint.getCargo()));
+        convertedWaypoint.setId(waypointDTO.getId());
+        convertedWaypoint.setCityLoading(cityService.getCityByName(waypointDTO.getCityLoading()));
+        convertedWaypoint.setCityUnloading(cityService.getCityByName(waypointDTO.getCityUnloading()));
+        convertedWaypoint.setCargo(cargoService.getCargoByName(waypointDTO.getCargo()));
 
         return convertedWaypoint;
     }

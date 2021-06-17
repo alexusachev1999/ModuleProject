@@ -5,15 +5,12 @@ import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
-import ru.usachev.LogiWebProject.controller.admin.AdminDriverController;
+import ru.usachev.LogiWebProject.dao.api.UserDAO;
 import ru.usachev.LogiWebProject.entity.Driver;
 import ru.usachev.LogiWebProject.entity.User;
-import ru.usachev.LogiWebProject.entity.UserRole;
-import ru.usachev.LogiWebProject.service.DriverService;
 
 import javax.persistence.NoResultException;
 import javax.transaction.Transactional;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -87,17 +84,4 @@ public class UserDAOImpl implements UserDAO {
 			logger.info("disable driver: " + driver.getName() + " " + driver.getSurname());
 		}
 	}
-
-	@Override
-	public List<User> freeUserForDrivers() {
-		Session session = sessionFactory.getCurrentSession();
-
-		List<User> users = session.createQuery("from User ").getResultList();
-
-		List<User> result = users.stream()
-				.filter(c -> "ROLE_DRIVER".equals(c.getUserRole().get(0).getRole()))
-				.collect(Collectors.toList());
-		return result;
-	}
-
 }

@@ -53,6 +53,8 @@ public class BusinessCalculatingTest {
 
     @Test
     public void testCalculateDistanceOfOrderByOrderId(){
-
     }
+
+    @Test
+    public void testNewMethod(){}
 }

@@ -8,8 +8,8 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import ru.usachev.LogiWebProject.converter.api.TruckConverter;
 import ru.usachev.LogiWebProject.dto.TruckDTO;
-import ru.usachev.LogiWebProject.service.CityService;
-import ru.usachev.LogiWebProject.service.TruckService;
+import ru.usachev.LogiWebProject.service.api.CityService;
+import ru.usachev.LogiWebProject.service.api.TruckService;
 import ru.usachev.LogiWebProject.validation.TruckValidator;
 
 import javax.validation.Valid;

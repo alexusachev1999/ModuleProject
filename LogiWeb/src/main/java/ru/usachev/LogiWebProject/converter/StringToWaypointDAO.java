@@ -6,7 +6,7 @@ import org.springframework.stereotype.Component;
 import ru.usachev.LogiWebProject.converter.api.WaypointConverter;
 import ru.usachev.LogiWebProject.dto.WaypointDTO;
 import ru.usachev.LogiWebProject.entity.Waypoint;
-import ru.usachev.LogiWebProject.service.WaypointService;
+import ru.usachev.LogiWebProject.service.api.WaypointService;
 
 @Component
 public class StringToWaypointDAO implements Converter<String, WaypointDTO> {

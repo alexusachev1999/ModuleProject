@@ -10,9 +10,9 @@ import org.mockito.junit.MockitoJUnitRunner;
 import ru.usachev.LogiWebProject.converter.DriverConverterImpl;
 import ru.usachev.LogiWebProject.dto.DriverDTO;
 import ru.usachev.LogiWebProject.entity.*;
-import ru.usachev.LogiWebProject.service.CityService;
-import ru.usachev.LogiWebProject.service.TruckService;
-import ru.usachev.LogiWebProject.service.UserService;
+import ru.usachev.LogiWebProject.service.api.CityService;
+import ru.usachev.LogiWebProject.service.api.TruckService;
+import ru.usachev.LogiWebProject.service.api.UserService;
 
 import java.util.ArrayList;
 import java.util.List;

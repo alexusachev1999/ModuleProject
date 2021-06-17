@@ -4,7 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import ru.usachev.LogiWebProject.dto.DriverDTO;
 import ru.usachev.LogiWebProject.entity.Driver;
-import ru.usachev.LogiWebProject.service.DriverService;
+import ru.usachev.LogiWebProject.service.api.DriverService;
 
 import javax.persistence.NoResultException;
 

@@ -6,16 +6,17 @@ import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
 import ru.usachev.LogiWebProject.aop.UpdateAnnotation;
 import ru.usachev.LogiWebProject.converter.api.DriverConverter;
-import ru.usachev.LogiWebProject.dao.DriverDAO;
+import ru.usachev.LogiWebProject.dao.api.DriverDAO;
 import ru.usachev.LogiWebProject.dto.DriverDTO;
 import ru.usachev.LogiWebProject.dto.restDTO.DriverRestDTO;
 import ru.usachev.LogiWebProject.entity.Driver;
+import ru.usachev.LogiWebProject.service.api.DriverService;
 
 import javax.transaction.Transactional;
 import java.util.List;
 
 @Service
-public class DriverServiceImpl implements DriverService{
+public class DriverServiceImpl implements DriverService {
 
     static Logger log = Logger.getLogger(DriverServiceImpl.class.getName());
 
@@ -62,12 +63,6 @@ public class DriverServiceImpl implements DriverService{
     @UpdateAnnotation
     public void deleteDriver(int id) {
         driverDAO.deleteDriver(id);
-    }
-
-    @Override
-    @Transactional
-    public List<Driver> getDriversByOrderId(int orderId) {
-        return driverDAO.getDriversByOrderId(orderId);
     }
 
     @Override

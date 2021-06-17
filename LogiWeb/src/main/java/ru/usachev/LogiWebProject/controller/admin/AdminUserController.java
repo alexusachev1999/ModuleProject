@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.*;
 import ru.usachev.LogiWebProject.converter.api.UserConverter;
 import ru.usachev.LogiWebProject.dto.UserDTO;
 import ru.usachev.LogiWebProject.entity.User;
-import ru.usachev.LogiWebProject.service.UserService;
+import ru.usachev.LogiWebProject.service.api.UserService;
 
 import javax.validation.Valid;
 import java.util.List;

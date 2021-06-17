@@ -4,18 +4,19 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import ru.usachev.LogiWebProject.aop.UpdateAnnotation;
 import ru.usachev.LogiWebProject.converter.api.TruckConverter;
-import ru.usachev.LogiWebProject.dao.TruckDAO;
+import ru.usachev.LogiWebProject.dao.api.TruckDAO;
 import ru.usachev.LogiWebProject.dto.TruckDTO;
 import ru.usachev.LogiWebProject.dto.WaypointDTO;
 import ru.usachev.LogiWebProject.dto.restDTO.TruckRestDTO;
 import ru.usachev.LogiWebProject.entity.Truck;
+import ru.usachev.LogiWebProject.service.api.TruckService;
 
 import javax.transaction.Transactional;
 import java.util.ArrayList;
 import java.util.List;
 
 @Service
-public class TruckServiceImpl implements TruckService{
+public class TruckServiceImpl implements TruckService {
 
     @Autowired
     private TruckDAO truckDAO;
@@ -93,12 +94,6 @@ public class TruckServiceImpl implements TruckService{
         TruckDTO truckDTO = truckConverter.convertTruckToTruckDTO(truck);
 
         return truckDTO;
-    }
-
-    @Override
-    @Transactional
-    public Truck getTruckByDriverId(int id) {
-        return truckDAO.getTruckByDriverId(id);
     }
 
     @Override

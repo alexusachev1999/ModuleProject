@@ -4,15 +4,18 @@ import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import ru.usachev.LogiWebProject.converter.api.WaypointConverter;
-import ru.usachev.LogiWebProject.dao.DistanceDAO;
+import ru.usachev.LogiWebProject.dao.api.DistanceDAO;
 import ru.usachev.LogiWebProject.dto.WaypointDTO;
 import ru.usachev.LogiWebProject.entity.Distance;
 import ru.usachev.LogiWebProject.entity.Order;
 import ru.usachev.LogiWebProject.entity.Waypoint;
-import ru.usachev.LogiWebProject.service.OrderService;
+import ru.usachev.LogiWebProject.service.api.OrderService;
 
 import java.util.*;
 
+/**
+ * This class calculates all needing values for creating the order
+ */
 @Component
 public class BusinessCalculating {
 
@@ -27,12 +30,16 @@ public class BusinessCalculating {
     @Autowired
     private DistanceDAO distanceDAO;
 
+
     private static final int driverWorkedHoursLimit = 176;
 
     private static final double approximateSpeedOfTruckInKmPerHour = 80;
 
-
-
+    /**
+     *
+     * @param waypointsDTO
+     * @return int
+     */
     public int calculateNeedingCapacityByWaypointList(List<WaypointDTO> waypointsDTO) {
         int capacity = 0;
 
@@ -54,12 +61,20 @@ public class BusinessCalculating {
 
     }
 
-
-    /* Max number of hours which driver may has before execution the order */
+    /**
+     * Max number of hours which driver may has before execution the order
+     * @param orderId
+     * @return int
+     */
     public int calculateDriverWorkedHoursLimitForOrderByOrderId(int orderId) {
         return driverWorkedHoursLimit - calculateApproximateTimeOfOrderExecution(orderId);
     }
 
+    /**
+     *
+     * @param orderId
+     * @return
+     */
     public int calculateApproximateTimeOfOrderExecution(int orderId){
         int distanceOfOrderInKm = calculateDistanceOfOrderByOrderId(orderId);
 
@@ -69,6 +84,11 @@ public class BusinessCalculating {
         return (int) Math.round(approximateTimeInHours);
     }
 
+    /**
+     *
+     * @param orderId
+     * @return
+     */
     private int calculateDistanceOfOrderByOrderId(int orderId) {
         Order order = orderService.getOrder(orderId);
         List<Waypoint> waypoints = order.getWaypoints();
@@ -114,7 +134,11 @@ public class BusinessCalculating {
         return distanceForOrder;
     }
 
-
+    /**
+     *
+     * @param waypoints
+     * @return
+     */
     private List<WaypointBusiness> convertWaypointListIntoWaypointBusinessList(List<Waypoint> waypoints){
         List<WaypointBusiness> waypointBusinessList = new ArrayList<>();
 

@@ -5,15 +5,14 @@ import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
-import ru.usachev.LogiWebProject.dto.OrderDTO;
+import ru.usachev.LogiWebProject.dao.api.OrderDAO;
 import ru.usachev.LogiWebProject.entity.*;
 
 import javax.persistence.NoResultException;
-import javax.transaction.Transactional;
 import java.util.List;
 
 @Repository
-public class OrderDAOImpl implements OrderDAO{
+public class OrderDAOImpl implements OrderDAO {
 
     private static Logger logger = Logger.getLogger(OrderDAOImpl.class);
 

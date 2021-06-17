@@ -12,8 +12,8 @@ import ru.usachev.LogiWebProject.dto.WaypointDTO;
 import ru.usachev.LogiWebProject.entity.Cargo;
 import ru.usachev.LogiWebProject.entity.City;
 import ru.usachev.LogiWebProject.entity.Waypoint;
-import ru.usachev.LogiWebProject.service.CargoService;
-import ru.usachev.LogiWebProject.service.CityService;
+import ru.usachev.LogiWebProject.service.api.CargoService;
+import ru.usachev.LogiWebProject.service.api.CityService;
 
 import static org.mockito.Mockito.when;
 

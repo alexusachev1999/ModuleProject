@@ -6,6 +6,7 @@ import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import ru.usachev.LogiWebProject.calculating.BusinessCalculating;
+import ru.usachev.LogiWebProject.dao.api.DriverDAO;
 import ru.usachev.LogiWebProject.dto.DriverDTO;
 import ru.usachev.LogiWebProject.dto.restDTO.DriverRestDTO;
 import ru.usachev.LogiWebProject.entity.City;
@@ -18,7 +19,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Repository
-public class DriverDAOImpl implements DriverDAO{
+public class DriverDAOImpl implements DriverDAO {
     private static Logger logger = Logger.getLogger(DriverDAOImpl.class);
 
     @Autowired
@@ -248,7 +249,7 @@ public class DriverDAOImpl implements DriverDAO{
             int numberOfDriverNow = drivers.size();
             driverRestDTO.setNumberOfDriverNow(numberOfDriverNow);
 
-            /* It's get all enabled drivers*/
+            /* It's get all free drivers*/
             drivers.removeIf(driver -> !driver.getStatus().equalsIgnoreCase("Отдых"));
             driverRestDTO.setNumberOfEnabledDriver(drivers.size());
 

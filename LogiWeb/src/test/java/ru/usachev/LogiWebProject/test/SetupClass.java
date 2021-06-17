@@ -111,7 +111,7 @@ public class SetupClass {
         cargo.setId(1);
         cargo.setName("test");
         cargo.setStatus("test");
-        cargo.setWeight(100);
+        cargo.setWeight(1000);
         cargo.setNumber(1000);
         cargo.setWaypoints(null);
         return cargo;
@@ -122,7 +122,7 @@ public class SetupClass {
         cargoDTO.setId(1);
         cargoDTO.setName("test");
         cargoDTO.setStatus("test");
-        cargoDTO.setWeight(100);
+        cargoDTO.setWeight(1000);
         cargoDTO.setNumber(1000);
         return cargoDTO;
     }
@@ -206,5 +206,12 @@ public class SetupClass {
         waypoint.setCargo(setupCargo().getName());
         waypoint.setCargoStatus(setupCargo().getStatus());
         return waypoint;
+    }
+
+    public static List<Waypoint> setupWaypointListForBusinessCalculating() {
+        List<Waypoint> waypointList = new ArrayList<>();
+        Waypoint waypoint = setupWaypoint();
+        waypointList.add(waypoint);
+        return waypointList;
     }
 }

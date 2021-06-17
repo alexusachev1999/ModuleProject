@@ -11,7 +11,7 @@ import ru.usachev.LogiWebProject.converter.TruckConverterImpl;
 import ru.usachev.LogiWebProject.dto.TruckDTO;
 import ru.usachev.LogiWebProject.entity.City;
 import ru.usachev.LogiWebProject.entity.Truck;
-import ru.usachev.LogiWebProject.service.CityService;
+import ru.usachev.LogiWebProject.service.api.CityService;
 
 import java.util.List;
 

@@ -4,16 +4,17 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import ru.usachev.LogiWebProject.aop.UpdateAnnotation;
 import ru.usachev.LogiWebProject.converter.api.WaypointConverter;
-import ru.usachev.LogiWebProject.dao.WaypointDAO;
+import ru.usachev.LogiWebProject.dao.api.WaypointDAO;
 import ru.usachev.LogiWebProject.dto.WaypointDTO;
 import ru.usachev.LogiWebProject.entity.Waypoint;
+import ru.usachev.LogiWebProject.service.api.WaypointService;
 
 import javax.transaction.Transactional;
 import java.util.ArrayList;
 import java.util.List;
 
 @Service
-public class WaypointServiceImpl implements WaypointService{
+public class WaypointServiceImpl implements WaypointService {
 
     @Autowired
     private WaypointDAO waypointDAO;
@@ -51,13 +52,6 @@ public class WaypointServiceImpl implements WaypointService{
     @UpdateAnnotation
     public void deleteWaypoint(int id) {
         waypointDAO.deleteWaypoint(id);
-    }
-
-    @Override
-    @Transactional
-    public WaypointDTO getWaypointByCargoName(String waypointToString) {
-        return waypointConverter
-                .convertWaypointToWaypointDTO(waypointDAO.getWaypointByCargoName(waypointToString));
     }
 
     @Override

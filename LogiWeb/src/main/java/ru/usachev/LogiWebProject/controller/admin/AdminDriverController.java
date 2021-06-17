@@ -10,9 +10,9 @@ import ru.usachev.LogiWebProject.converter.api.DriverConverter;
 import ru.usachev.LogiWebProject.dto.DriverDTO;
 import ru.usachev.LogiWebProject.dto.UserDTO;
 import ru.usachev.LogiWebProject.entity.Driver;
-import ru.usachev.LogiWebProject.service.CityService;
-import ru.usachev.LogiWebProject.service.DriverService;
-import ru.usachev.LogiWebProject.service.UserService;
+import ru.usachev.LogiWebProject.service.api.CityService;
+import ru.usachev.LogiWebProject.service.api.DriverService;
+import ru.usachev.LogiWebProject.service.api.UserService;
 import ru.usachev.LogiWebProject.validation.DriverValidator;
 import ru.usachev.LogiWebProject.validation.UserValidator;
 

@@ -4,6 +4,9 @@ import org.apache.log4j.Logger;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 
+/**
+ * ExceptionHandler class works when getting any exception in LogiWebProject app
+ */
 @ControllerAdvice
 public class MyExceptionHandler {
 

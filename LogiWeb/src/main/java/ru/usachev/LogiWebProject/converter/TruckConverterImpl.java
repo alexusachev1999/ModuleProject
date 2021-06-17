@@ -5,7 +5,7 @@ import org.springframework.stereotype.Component;
 import ru.usachev.LogiWebProject.converter.api.TruckConverter;
 import ru.usachev.LogiWebProject.dto.TruckDTO;
 import ru.usachev.LogiWebProject.entity.Truck;
-import ru.usachev.LogiWebProject.service.CityService;
+import ru.usachev.LogiWebProject.service.api.CityService;
 
 import java.util.ArrayList;
 import java.util.List;

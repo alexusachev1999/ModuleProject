@@ -4,15 +4,16 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import ru.usachev.LogiWebProject.aop.UpdateAnnotation;
 import ru.usachev.LogiWebProject.converter.api.CargoConverter;
-import ru.usachev.LogiWebProject.dao.CargoDAO;
+import ru.usachev.LogiWebProject.dao.api.CargoDAO;
 import ru.usachev.LogiWebProject.dto.CargoDTO;
 import ru.usachev.LogiWebProject.entity.Cargo;
+import ru.usachev.LogiWebProject.service.api.CargoService;
 
 import javax.transaction.Transactional;
 import java.util.List;
 
 @Service
-public class CargoServiceImpl implements CargoService{
+public class CargoServiceImpl implements CargoService {
 
     @Autowired
     private CargoDAO cargoDAO;
@@ -32,13 +33,6 @@ public class CargoServiceImpl implements CargoService{
     public void saveCargo(CargoDTO cargo) {
         Cargo convertedCargo = cargoConverter.convertCargoDTOToCargo(cargo);
         cargoDAO.saveCargo(convertedCargo);
-    }
-
-    @Override
-    @Transactional
-    @UpdateAnnotation
-    public void deleteCargo(int id) {
-        cargoDAO.deleteCargo(id);
     }
 
     @Override

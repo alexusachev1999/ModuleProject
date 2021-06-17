@@ -1,4 +1,4 @@
-package ru.usachev.LogiWebProject.service;
+package ru.usachev.LogiWebProject.service.api;
 
 import ru.usachev.LogiWebProject.dto.DriverDTO;
 import ru.usachev.LogiWebProject.dto.restDTO.DriverRestDTO;
@@ -6,6 +6,13 @@ import ru.usachev.LogiWebProject.entity.Driver;
 
 import java.util.List;
 
+/**
+ * Service class for getting data from DB by DAO class
+ * Convert it by converter class
+ * And Send to controller
+ *
+ * @author Alex Usachev
+ */
 public interface DriverService {
 
     List<DriverDTO> getAllDrivers ();
@@ -17,8 +24,6 @@ public interface DriverService {
     Driver getDriver(int id);
 
     void deleteDriver(int id);
-
-    List<Driver> getDriversByOrderId(int orderId);
 
     List<DriverDTO> getValidDriversByOrderId(int orderId);
 

@@ -5,6 +5,7 @@ import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
+import ru.usachev.LogiWebProject.dao.api.CargoDAO;
 import ru.usachev.LogiWebProject.entity.Cargo;
 import ru.usachev.LogiWebProject.entity.Waypoint;
 
@@ -13,7 +14,7 @@ import javax.persistence.Query;
 import java.util.List;
 
 @Repository
-public class CargoDAOImpl implements CargoDAO{
+public class CargoDAOImpl implements CargoDAO {
 
     private static Logger logger = Logger.getLogger(CargoDAOImpl.class);
 

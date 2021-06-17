@@ -10,8 +10,8 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import ru.usachev.LogiWebProject.converter.api.CargoConverter;
 import ru.usachev.LogiWebProject.dto.CargoDTO;
 import ru.usachev.LogiWebProject.entity.Cargo;
-import ru.usachev.LogiWebProject.service.CargoService;
-import ru.usachev.LogiWebProject.service.WaypointService;
+import ru.usachev.LogiWebProject.service.api.CargoService;
+import ru.usachev.LogiWebProject.service.api.WaypointService;
 import ru.usachev.LogiWebProject.validation.CargoValidator;
 
 import javax.validation.Valid;

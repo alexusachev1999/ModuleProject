@@ -1,19 +1,50 @@
-package ru.usachev.LogiWebProject.dao;
+package ru.usachev.LogiWebProject.dao.api;
 
 import ru.usachev.LogiWebProject.entity.Cargo;
 
 import java.util.List;
 
+/**
+ * DAO for operations for table 'cargoes' from DB 'logiWeb'
+ * @author Alex Usachev
+ */
 public interface CargoDAO {
-    public List<Cargo> getAllCargoes();
+    /**
+     * Getting all cargoes from D
+     * @return List
+     */
+    List<Cargo> getAllCargoes();
 
-    public void saveCargo(Cargo cargo);
+    /**
+     * Saving and updating cargo to DB
+     * @param cargo
+     */
+    void saveCargo(Cargo cargo);
 
-    public void deleteCargo(int id);
+    /**
+     * Delete cargo from DB by cargoId
+     * @param id
+     */
+    void deleteCargo(int id);
 
-    public Cargo getCargo(int id);
+    /**
+     * Getting cargo from DB by cargoId
+     * @param id
+     * @return Cargo
+     */
+    Cargo getCargo(int id);
 
+    /**
+     * Getting cargo from DB by cargoName
+     * @param cargoName
+     * @return Cargo
+     */
     Cargo getCargoByName(String cargoName);
 
+    /**
+     * Getting cargo from DB by waypointId
+     * @param waypointId
+     * @return Cargo
+     */
     Cargo getCargoByWaypointId(int waypointId);
 }

@@ -2,13 +2,13 @@ package ru.usachev.LogiWebProject.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import ru.usachev.LogiWebProject.dto.DriverDTO;
 import ru.usachev.LogiWebProject.dto.OrderDTO;
-import ru.usachev.LogiWebProject.dto.TruckDTO;
 import ru.usachev.LogiWebProject.dto.restDTO.DisplayDTO;
-import ru.usachev.LogiWebProject.entity.Order;
+import ru.usachev.LogiWebProject.service.api.DriverService;
+import ru.usachev.LogiWebProject.service.api.OrderService;
+import ru.usachev.LogiWebProject.service.api.RestService;
+import ru.usachev.LogiWebProject.service.api.TruckService;
 
-import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 

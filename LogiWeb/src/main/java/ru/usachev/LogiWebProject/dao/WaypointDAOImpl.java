@@ -5,7 +5,7 @@ import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
-import ru.usachev.LogiWebProject.dto.WaypointDTO;
+import ru.usachev.LogiWebProject.dao.api.WaypointDAO;
 import ru.usachev.LogiWebProject.entity.Cargo;
 import ru.usachev.LogiWebProject.entity.City;
 import ru.usachev.LogiWebProject.entity.Order;
@@ -17,7 +17,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Repository
-public class WaypointDAOImpl implements WaypointDAO{
+public class WaypointDAOImpl implements WaypointDAO {
 
     private static Logger logger = Logger.getLogger(WaypointDAOImpl.class);
 
@@ -96,11 +96,11 @@ public class WaypointDAOImpl implements WaypointDAO{
     }
 
     @Override
-    public Waypoint getWaypointByCargoName(String waypointToString) {
+    public Waypoint getWaypointByCargoName(String cargoName) {
         Session session = sessionFactory.getCurrentSession();
 
         Waypoint waypoint = session.createQuery("from Waypoint where cargo.name=:name", Waypoint.class)
-                .setParameter("name", waypointToString)
+                .setParameter("name", cargoName)
                 .getSingleResult();
         try {
             return waypoint;

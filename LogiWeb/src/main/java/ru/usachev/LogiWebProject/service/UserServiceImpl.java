@@ -4,9 +4,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import ru.usachev.LogiWebProject.converter.api.UserConverter;
-import ru.usachev.LogiWebProject.dao.UserDAO;
+import ru.usachev.LogiWebProject.dao.api.UserDAO;
 import ru.usachev.LogiWebProject.dto.UserDTO;
 import ru.usachev.LogiWebProject.entity.User;
+import ru.usachev.LogiWebProject.service.api.UserService;
 
 import javax.transaction.Transactional;
 import java.util.List;
@@ -40,12 +41,6 @@ public class UserServiceImpl implements UserService {
 
     @Override
     @Transactional
-    public User getUser(int id) {
-        return userDAO.getUser(id);
-    }
-
-    @Override
-    @Transactional
     public void deleteUser(User user) {
         userDAO.deleteUser(user);
     }
@@ -54,11 +49,5 @@ public class UserServiceImpl implements UserService {
     @Transactional
     public User getUserByUsername(String userName) {
         return userDAO.findByUserName(userName);
-    }
-
-    @Override
-    @Transactional
-    public List<User> freeUserForDrivers() {
-        return userDAO.freeUserForDrivers();
     }
 }

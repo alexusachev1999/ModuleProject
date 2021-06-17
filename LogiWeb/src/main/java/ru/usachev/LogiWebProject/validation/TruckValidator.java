@@ -4,7 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import ru.usachev.LogiWebProject.dto.TruckDTO;
 import ru.usachev.LogiWebProject.entity.Truck;
-import ru.usachev.LogiWebProject.service.TruckService;
+import ru.usachev.LogiWebProject.service.api.TruckService;
 
 import javax.persistence.NoResultException;
 

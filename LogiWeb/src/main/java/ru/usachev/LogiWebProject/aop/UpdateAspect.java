@@ -7,6 +7,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import ru.usachev.LogiWebProject.jms.Producer;
 
+/**
+ * Aspect class which sends message to Display app when something changes in DB
+ */
 @Component
 @Aspect
 public class UpdateAspect {
