@@ -1,18 +1,17 @@
-//package ru.usachev.LogiWebProject.exception;
-//
-//import org.apache.log4j.Logger;
-//import org.springframework.web.bind.annotation.ControllerAdvice;
-//import org.springframework.web.bind.annotation.ExceptionHandler;
-//import org.springframework.web.servlet.ModelAndView;
-//
-//@ControllerAdvice
-//public class MyExceptionHandler {
-//
-//    private static final Logger logger = Logger.getLogger(MyExceptionHandler.class);
-//
-//    @ExceptionHandler({Exception.class})
-//    public String handleRuntimeException(Exception ex) {
-//        logger.error("Get exception: " + ex);
-//        return "pages/500";
-//    }
-//}
+package ru.usachev.LogiWebProject.exception;
+
+import org.apache.log4j.Logger;
+import org.springframework.web.bind.annotation.ControllerAdvice;
+import org.springframework.web.bind.annotation.ExceptionHandler;
+
+@ControllerAdvice
+public class MyExceptionHandler {
+
+    private static final Logger logger = Logger.getLogger(MyExceptionHandler.class);
+
+    @ExceptionHandler({Exception.class})
+    public String handleRuntimeException(Exception ex) {
+        logger.error("Get exception: " + ex);
+        return "pages/500";
+    }
+}
