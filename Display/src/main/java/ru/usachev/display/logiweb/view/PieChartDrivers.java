@@ -41,7 +41,7 @@ public class PieChartDrivers implements Serializable {
         pieModel = new PieChartModel();
         pieModel.set("Свобоные", driverRestDTO.getNumberOfEnabledDriver());
         pieModel.set("Занятые", driverRestDTO.getNumberOfDisabledDriver());
-        pieModel.setTitle("Водители");
+        pieModel.setTitle("Статистика водителей");
         pieModel.setLegendPosition("c");
     }
 }

@@ -13,91 +13,111 @@
     </h:head>
 
     <h:body>
-        <div class="main-div">
-            <h2 class="h2">Статистика приложения LogiWeb</h2>
-        </div>
-        <br/><br/>
-
-        <h:panelGroup id="display" rendered="true">
-            <p:dataTable value = "#{displayBean.displayDTO.orderDTOList}" var = "order"
-                         styleClass="table table-bordered table-dark" paginator="true" rows="10">
-
-                <p:column>
-                    <f:facet name = "header">Номер заказа</f:facet>
-                    #{order.number}
-                </p:column>
-
-                <p:column>
-                    <f:facet name = "header">Фура</f:facet>
-                    #{order.truck}
-                </p:column>
-
-                <p:column>
-                    <f:facet name = "header">Список водителей</f:facet>
-                    <ol>
-                        <ui:repeat var="driver" value="#{order.drivers}">
-                            <li>${driver.name} #{driver.surname} #{driver.phoneNumber}</li>
-                        </ui:repeat>
-                    </ol>
-                </p:column>
-
-                <p:column>
-                    <f:facet name = "header">Список маршрутных точек</f:facet>
-                    <ol>
-                        <ui:repeat var="waypoint" value="#{order.waypoints}">
-                            <li>${waypoint.cargo}: #{waypoint.cityLoading} - #{waypoint.cityUnloading}</li>
-                        </ui:repeat>
-                    </ol>
-                </p:column>
-
-                <p:column>
-                    <f:facet name = "header">Статус</f:facet>
-                    #{order.status ? 'Выполнен' : 'В работе'}
-                </p:column>
-
-            </p:dataTable>
-
-            <br/><br/><br/>
-
-            <table class="table table-bordered table-dark">
-                <tr>
-                    <th>Общее количество водителей</th>
-                    <th>Количество доступных водителей</th>
-                    <th>Количество недоступных водителей</th>
-                </tr>
-                <tr>
-                    <td>#{displayBean.displayDTO.driverRestDTO.numberOfDriverNow}</td>
-                    <td>#{displayBean.displayDTO.driverRestDTO.numberOfEnabledDriver}</td>
-                    <td>#{displayBean.displayDTO.driverRestDTO.numberOfDisabledDriver}</td>
-                </tr>
-            </table>
-
-            <br/><br/><br/>
-
-            <table class="table table-bordered table-dark">
-                <tr>
-                    <th>Всего фур</th>
-                    <th>Свободных фур</th>
-                    <th>Занятых фур</th>
-                    <th>Сломанных фур</th>
-                </tr>
-                <tr>
-                    <td>#{displayBean.displayDTO.truckRestDTO.numberOfTruckNow}</td>
-                    <td>#{displayBean.displayDTO.truckRestDTO.numberOfFreeTruck}</td>
-                    <td>#{displayBean.displayDTO.truckRestDTO.numberOfInOrderTruck}</td>
-                    <td>#{displayBean.displayDTO.truckRestDTO.numberOfBrokenTruck}</td>
-                </tr>
-            </table>
-
-            <p:chart type="pie" model="#{pieChartDrivers.pieModel}" style="width:600px;height:500px" />
-
+        <div class="grid">
+            <div class="main-div">
+                <h2 class="h1">Статистика приложения LogiWeb</h2>
+            </div>
             <br/><br/>
 
-            <p:chart type="pie" model="#{pieChartTrucks.pieModel}" style="width:600px;height:500px" />
+            <h2 class="h2" style="text-align: center;margin: auto;align-self: center;">Последние заказы</h2>
+            <h:panelGroup id="display" rendered="true">
+                <p:dataTable value = "#{displayBean.displayDTO.orderDTOList}" var = "order"
+                             styleClass="table table-bordered table-dark"
+                             style="font-size: 20px"
+                             paginator="true"
+                             paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+                             currentPageReportTemplate="{startRecord}-{endRecord} of {totalRecords} records"
+                             rowsPerPageTemplate="1,5,10">
 
-        </h:panelGroup>
+                    <p:column style="text-align: center;border: 2px solid black;width: 100px">
+                        <f:facet name = "header">Номер заказа</f:facet>
+                        #{order.number}
+                    </p:column>
 
-        <br/><br/><br/>
+                    <p:column style="text-align: center;border: 2px solid black;width: 110px">
+                        <f:facet name = "header">Фура</f:facet>
+                        #{order.truck}
+                    </p:column>
+
+                    <p:column style="text-align: center;border: 2px solid black;">
+                        <f:facet name = "header">Список водителей</f:facet>
+                        <ol>
+                            <ui:repeat var="driver" value="#{order.drivers}">
+                                <li>${driver.name} #{driver.surname} #{driver.phoneNumber}</li>
+                            </ui:repeat>
+                        </ol>
+                    </p:column>
+
+                    <p:column style="text-align: center;border: 2px solid black;">
+                        <f:facet name = "header">Список маршрутных точек</f:facet>
+                        <ol>
+                            <ui:repeat var="waypoint" value="#{order.waypoints}">
+                                <li>${waypoint.cargo}: #{waypoint.cityLoading} - #{waypoint.cityUnloading}</li>
+                            </ui:repeat>
+                        </ol>
+                    </p:column>
+
+                    <p:column style="text-align: center;border: 2px solid black;width: 200px">
+                        <f:facet name = "header">Статус</f:facet>
+                        #{order.status ? '✅ Выполнен' : '❌ В работе'}
+                    </p:column>
+
+                </p:dataTable>
+
+
+                <br/><br/>
+
+                <h2 class="h2" style="text-align: center;margin: auto;align-self: center;">Статистика для водителей</h2>
+                <br/>
+                <table class="table table-bordered table-dark" style="font-size: 20px">
+                    <tr style="text-align: center">
+                        <th>Общее количество водителей</th>
+                        <th>Количество доступных водителей</th>
+                        <th>Количество недоступных водителей</th>
+                    </tr>
+                    <tr style="text-align: center">
+                        <td>#{displayBean.displayDTO.driverRestDTO.numberOfDriverNow}</td>
+                        <td>#{displayBean.displayDTO.driverRestDTO.numberOfEnabledDriver}</td>
+                        <td>#{displayBean.displayDTO.driverRestDTO.numberOfDisabledDriver}</td>
+                    </tr>
+                </table>
+
+                <br/><br/><br/>
+
+                <h2 class="h2" style="text-align: center;margin: auto;align-self: center;">Статистика для фур</h2>
+                <br/>
+                <table class="table table-bordered table-dark" style="font-size: 20px">
+                    <tr style="text-align: center">
+                        <th>Всего фур</th>
+                        <th>Свободных фур</th>
+                        <th>Занятых фур</th>
+                        <th>Сломанных фур</th>
+                    </tr>
+                    <tr style="text-align: center">
+                        <td>#{displayBean.displayDTO.truckRestDTO.numberOfTruckNow}</td>
+                        <td>#{displayBean.displayDTO.truckRestDTO.numberOfFreeTruck}</td>
+                        <td>#{displayBean.displayDTO.truckRestDTO.numberOfInOrderTruck}</td>
+                        <td>#{displayBean.displayDTO.truckRestDTO.numberOfBrokenTruck}</td>
+                    </tr>
+                </table>
+
+                <br/>
+
+
+                <div style="display: grid;grid-template-columns: 50% 50%">
+                    <div>
+                        <p:chart type="pie" model="#{pieChartDrivers.pieModel}" styleClass="grid" style="width:600px;height:500px;margin: auto;font-size: 20px; color: black" />
+                    </div>
+                    <div>
+                        <p:chart type="pie" model="#{pieChartTrucks.pieModel}" styleClass="grid" style="width:600px;height:500px;margin: auto; font-size: 20px; color: black" />
+                    </div>
+                </div>
+
+
+            </h:panelGroup>
+
+            <br/>
+        </div>
 
         <h:form>
             <f:websocket channel="websocket">

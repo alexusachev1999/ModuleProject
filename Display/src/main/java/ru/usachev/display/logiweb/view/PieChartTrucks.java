@@ -40,7 +40,7 @@ public class PieChartTrucks implements Serializable {
         pieModel.set("Свобоные", truckRestDTO.getNumberOfFreeTruck());
         pieModel.set("Занятые", truckRestDTO.getNumberOfInOrderTruck());
         pieModel.set("Сломанные", truckRestDTO.getNumberOfBrokenTruck());
-        pieModel.setTitle("Фуры");
+        pieModel.setTitle("Статистика фур");
         pieModel.setLegendPosition("c");
     }
 }

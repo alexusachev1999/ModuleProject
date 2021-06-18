@@ -16,3 +16,22 @@ h2.center{
     align-self: center;
     justify-self: center;
 }
+
+.grid{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-self: center;
+    justify-self: center;
+    margin-bottom: 20px;
+}
+
+.table-name-div{
+    text-align: center;
+    margin: auto;
+    padding-top: 1%;
+    align-self: center;
+    color: #000000;
+    width: 100%;
+    height: auto;
+    font-size: xxx-large;
+}
