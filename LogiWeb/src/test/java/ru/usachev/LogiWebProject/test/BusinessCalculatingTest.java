@@ -51,10 +51,4 @@ public class BusinessCalculatingTest {
         Assert.assertEquals(1, capacity);
     }
 
-    @Test
-    public void testCalculateDistanceOfOrderByOrderId(){
-    }
-
-    @Test
-    public void testNewMethod(){}
 }

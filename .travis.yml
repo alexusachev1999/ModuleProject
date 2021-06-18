@@ -1,15 +1,4 @@
-arch: amd64
-
 language: java
-
+dist: trusty
 jdk:
-  - oraclejdk15
-
-cache:
-  directories:
-    - $HOME/.m2
-
-script:
-  - java --version
-  - ./mvnw clean install
-  - ./mvnw test
+  - openjdk15
