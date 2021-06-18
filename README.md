@@ -6,4 +6,4 @@ In the task, you need to write an application that simulates the operation of th
 ### Result ###
 
 * Author name : Alexander Usachev
-* Travis status: [![Build Status](https://travis-ci.com/alexusachev1999/Hybernate.svg?branch=master)](https://travis-ci.com/alexusachev1999/Hybernate)
+* Travis status: [![Build Status](https://travis-ci.com/alexusachev1999/ModuleProject.svg?branch=master)](https://travis-ci.com/alexusachev1999/ModuleProject)
