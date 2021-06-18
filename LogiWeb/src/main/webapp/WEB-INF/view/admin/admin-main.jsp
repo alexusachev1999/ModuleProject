@@ -83,7 +83,7 @@
     <br/>
     <input type="button" class="buttonStyle" value="Грузы" onclick="window.location.href='/logiweb/admin/cargoes'">
     <br/>
-    <input type="button" class="buttonStyle" value="Добавить нового администратора" onclick="window.location.href='/logiweb/admin/users'">
+    <input type="button" class="buttonStyle" value="Пользователи" onclick="window.location.href='/logiweb/admin/users'">
 </div>
 
 

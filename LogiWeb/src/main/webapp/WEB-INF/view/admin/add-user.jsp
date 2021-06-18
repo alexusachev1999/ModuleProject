@@ -76,12 +76,23 @@
             <div class="form-group">
                 <label class="col-form-label-lg">Логин</label>
                 <form:input path="username" cssClass="form-control form-control-lg" placeholder="Логин"/>
+                <br/>
+                <form:errors path="username" cssClass="alert alert-danger"/>
+
+                <br/>
+                <c:if test="${!uniqueError.equals('no error')}">
+                    <div class="alert alert-danger" role="alert">
+                            ${uniqueError}
+                    </div>
+                </c:if>
             </div>
             <br/>
 
             <div class="form-group">
                 <label class="col-form-label-lg">Пароль</label>
-                <form:input path="password" cssClass="form-control form-control-lg" placeholder="Пароль"/>
+                <form:password path="password" cssClass="form-control form-control-lg" placeholder="Пароль"/>
+                <br/>
+                <form:errors path="password" cssClass="alert alert-danger"/>
             </div>
             <br/>
 
