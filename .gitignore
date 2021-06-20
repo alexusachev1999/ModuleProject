@@ -2,3 +2,4 @@
 java-doc
 Display/target
 LogiWeb/target
+#LogiWeb/src/test/java/ru/usachev/LogiWebProject/test/seleniumTest

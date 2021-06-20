@@ -1,4 +1,4 @@
-package ru.usachev.LogiWebProject.test;
+package ru.usachev.LogiWebProject.test.seleniumTest.pages;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;

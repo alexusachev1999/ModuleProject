@@ -1,4 +1,4 @@
-package ru.usachev.LogiWebProject.test.seleniumTest;
+package ru.usachev.LogiWebProject.test.seleniumTest.pages;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -7,10 +7,6 @@ import org.openqa.selenium.support.PageFactory;
 
 public class LoginPage {
     public WebDriver driver;
-
-    private String login = "test";
-
-    private String password = "test";
 
     public LoginPage(WebDriver driver) {
         PageFactory.initElements(driver, this);
@@ -26,11 +22,11 @@ public class LoginPage {
     @FindBy(xpath = "//*[contains(text(), 'Войти')]")
     private WebElement loginButton;
 
-    public void inputLogin(){
+    public void inputLogin(String login){
         loginField.sendKeys(login);
     }
 
-    public void inputPassword(){
+    public void inputPassword(String password){
         passwordField.sendKeys(password);
     }
 

@@ -1,29 +1,34 @@
 package ru.usachev.LogiWebProject.test.seleniumTest;
 
-import org.junit.After;
-import org.junit.Assert;
-import org.junit.Before;
-import org.junit.Test;
+import org.junit.*;
+import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
-import ru.usachev.LogiWebProject.test.StartPage;
-import ru.usachev.LogiWebProject.test.seleniumTest.LoginPage;
-import ru.usachev.LogiWebProject.test.seleniumTest.ProfilePage;
+import ru.usachev.LogiWebProject.test.seleniumTest.pages.LoginPage;
+import ru.usachev.LogiWebProject.test.seleniumTest.pages.AdminMenuPage;
+import ru.usachev.LogiWebProject.test.seleniumTest.pages.StartPage;
 
+@Ignore
 public class SeleniumTest {
     private ChromeDriver driver;
 
     public static LoginPage loginPage;
 
-    public static ProfilePage profilePage;
+    public static AdminMenuPage adminMenuPage;
 
     public static StartPage startPage;
+
+    private static final String correctLogin = "test";
+
+    private static final String correctPassword = "test";
+
+    private static final String wrongPassword = "wrong";
 
     @Before
     public void setup(){
         System.setProperty("webdriver.chrome.driver", "/bin/chromedriver");
         driver = new ChromeDriver();
         loginPage = new LoginPage(driver);
-        profilePage = new ProfilePage(driver);
+        adminMenuPage = new AdminMenuPage(driver);
         startPage = new StartPage(driver);
     }
 
@@ -36,21 +41,28 @@ public class SeleniumTest {
     }
 
     @Test
-    public void loginTest(){
-        scenarioOfLoginAndGetAdminMenu();
+    public void loginWithCorrectDataTest(){
+        scenarioOfLogin(correctLogin, correctPassword);
+        startPage.clickOnAdminButton();
 
         String title = driver.getTitle();
         Assert.assertEquals(title, "Меню администратора");
 
-        profilePage.logout();
+        adminMenuPage.logout();
     }
 
-    public void scenarioOfLoginAndGetAdminMenu(){
+    @Test
+    public void loginWithWrongDataTest(){
+        scenarioOfLogin(correctLogin, wrongPassword);
+        String title = driver.getTitle();
+        Assert.assertEquals(title, "Добро пожаловать");
+    }
+
+    public void scenarioOfLogin(String login, String password){
         driver.get("http://localhost:8099/logiweb/login");
-        loginPage.inputLogin();
-        loginPage.inputPassword();
+        loginPage.inputLogin(login);
+        loginPage.inputPassword(password);
         loginPage.clickOnLoginButton();
-        startPage.clickOnAdminButton();
     }
 
     @After

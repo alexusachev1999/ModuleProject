@@ -1,14 +1,14 @@
-package ru.usachev.LogiWebProject.test.seleniumTest;
+package ru.usachev.LogiWebProject.test.seleniumTest.pages;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
-public class ProfilePage {
+public class AdminMenuPage {
     public WebDriver driver;
 
-    public ProfilePage(WebDriver driver){
+    public AdminMenuPage(WebDriver driver){
         PageFactory.initElements(driver, this);
         this.driver = driver;
     }

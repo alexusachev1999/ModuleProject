@@ -250,7 +250,7 @@ public class DriverDAOImpl implements DriverDAO {
             driverRestDTO.setNumberOfDriverNow(numberOfDriverNow);
 
             /* It's get all free drivers*/
-            drivers.removeIf(driver -> !driver.getStatus().equalsIgnoreCase("Отдых"));
+            drivers.removeIf(driver -> driver.getOrder() != null);
             driverRestDTO.setNumberOfEnabledDriver(drivers.size());
 
             driverRestDTO.setNumberOfDisabledDriver(numberOfDriverNow - drivers.size());

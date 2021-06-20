@@ -36,7 +36,6 @@ public class RestServiceImpl implements RestService {
 
         orderService.getAllCompletedAndUncompletedOrders(orders);
 
-
         displayDTO.setOrderDTOList(orders);
         displayDTO.setDriverRestDTO(driverService.getDriverRestDTO());
         displayDTO.setTruckRestDTO(truckService.getTruckRestDTO());
