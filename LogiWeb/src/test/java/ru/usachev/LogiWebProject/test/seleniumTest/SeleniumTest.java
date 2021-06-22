@@ -1,7 +1,6 @@
 package ru.usachev.LogiWebProject.test.seleniumTest;
 
 import org.junit.*;
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import ru.usachev.LogiWebProject.test.seleniumTest.pages.LoginPage;
 import ru.usachev.LogiWebProject.test.seleniumTest.pages.AdminMenuPage;

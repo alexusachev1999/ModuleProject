@@ -56,15 +56,6 @@
         color: #000000;
         border: 4px solid black;
     }
-
-    .my-h2{
-        padding: 5%;
-        font-size: 30px;
-        text-align: center;
-        border-radius: 15px;
-        background-color: #000 !important;
-        color: #fff;
-    }
 </style>
 <body>
 

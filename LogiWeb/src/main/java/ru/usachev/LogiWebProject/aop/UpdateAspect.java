@@ -14,8 +14,6 @@ import ru.usachev.LogiWebProject.jms.Producer;
 @Aspect
 public class UpdateAspect {
 
-    private final String update = "update";
-
     @Autowired
     Producer producer;
 
